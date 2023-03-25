@@ -1,11 +1,9 @@
 from flask import Flask, render_template
-from main_code.model import db
+from main.extensions import db, migrate
 
 
 def create_app():
     app = Flask(__name__)
-    app.config.from_pyfile('config.py')
-    db.init_app(app)
 
     @app.route('/')
     def index():
@@ -13,3 +11,9 @@ def create_app():
         return render_template('index.html', title=title)
 
     return app
+
+
+def register_extensions(app):
+    db.init_app(app)
+    migrate.init_app(app, db)
+    return None

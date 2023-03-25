@@ -1,15 +1,13 @@
 from flask_sqlalchemy import SQLAlchemy
-from sqlalchemy import Column, Integer, String, ForeignKey
+from sqlalchemy import Column, Integer, ForeignKey
 from sqlalchemy.orm import Mapped, mapped_column
-
-db = SQLAlchemy()
 
 
 class Player(db.Model):
     __tablename__ = 'player'
 
     id: Mapped[int] = Column(Integer, primary_key=True)
-    name: Mapped[str] = mapped_column()
+    name: Mapped[str]
     age: Mapped[int]
     position: Mapped[str] = mapped_column()
     matches: Mapped[int]
@@ -48,10 +46,9 @@ class Player(db.Model):
 
 
 class Goalkeeper(Player):
-    __tablename__ = 'goalkeepers'
+    __tablename__ = 'goalkeeper'
 
     id: Mapped[int] = mapped_column(ForeignKey("player.id"), primary_key=True)
-    goalkeeper_name: Mapped[str] = mapped_column(key='player.name')
     goals_against: Mapped[int]
     shots_against: Mapped[int]
     saves: Mapped[int]
@@ -74,16 +71,11 @@ class Goalkeeper(Player):
     def_actions_OutOfPenArea: Mapped[int]
     average_dist_def_actions: Mapped[float]
 
-    __mapper_args__ = {
-        "polymorphic_identity": "GK"
-    }
 
-
-class Center_Back(Player):
-    __tablename__ = 'center_backs'
+class CenterBack(Player):
+    __tablename__ = 'center_back'
 
     id: Mapped[int] = mapped_column(ForeignKey("player.id"), primary_key=True)
-    center_defender_name: Mapped[str] = mapped_column(key='player.name')
     passes: Mapped[int]
     passes_completion: Mapped[float]
     total_passing_dist: Mapped[int]
@@ -118,11 +110,10 @@ class Center_Back(Player):
     }
 
 
-class Moderately_Attacking(Player):
-    __tablename__ = 'moderately_attacking_defenders'
+class ModeratelyAttacking(Player):
+    __abstract__ = True
 
     id: Mapped[int] = mapped_column(ForeignKey("player.id"), primary_key=True)
-    attacking_defender_name: Mapped[str] = mapped_column(key='player.name')
     passes: Mapped[int]
     passes_completion: Mapped[float]
     total_passing_dist: Mapped[int]
@@ -165,39 +156,42 @@ class Moderately_Attacking(Player):
     __mapper_args__ = {"polymorphic_abstract": True}
 
 
-class Left_Back(Moderately_Attacking):
+class LeftBack(ModeratelyAttacking):
+    __tablename__ = 'left_back'
 
     __mapper_args__ = {
         "polymorphic_identity": 'LB'
     }
 
 
-class Right_Back(Moderately_Attacking):
+class RightBack(ModeratelyAttacking):
+    __tablename__ = 'right_back'
 
     __mapper_args__ = {
         "polymorphic_identity": 'RB'
     }
 
 
-class Defensive_Midfielder(Moderately_Attacking):
+class DefensiveMidfielder(ModeratelyAttacking):
+    __tablename__ = 'defensive_midfielder'
 
     __mapper_args__ = {
         "polymorphic_identity": 'DM'
     }
 
 
-class Full_Back(Moderately_Attacking):
+class FullBack(ModeratelyAttacking):
+    __tablename__ = 'full_back'
 
     __mapper_args__ = {
         "polymorphic_identity": 'FB'
     }
 
 
-class Central_Midfielder(Player):
-    __tablename__ = 'central_midfielders'
+class CentralMidfielder(Player):
+    __tablename__ = 'central_midfielder'
 
     id: Mapped[int] = mapped_column(ForeignKey("player.id"), primary_key=True)
-    central_midfielder_name: Mapped[str] = mapped_column(key='player.name')
     shots: Mapped[int]
     shots_on_target: Mapped[int]
     shots_on_target_percentage: Mapped[float]
@@ -252,10 +246,9 @@ class Central_Midfielder(Player):
 
 
 class Attacking(Player):
-    __tablename__ = 'attackings'
-    id: Mapped[int] = mapped_column(ForeignKey("player.id"), primary_key=True)
-    attacking_player_name: Mapped[str] = mapped_column(key='player.name')
+    __abstract__ = True
 
+    id: Mapped[int] = mapped_column(ForeignKey("player.id"), primary_key=True)
     shots: Mapped[int]
     shots_on_target: Mapped[int]
     shots_on_target_percentage: Mapped[float]
@@ -300,42 +293,48 @@ class Attacking(Player):
     __mapper_args__ = {"polymorphic_abstract": True}
 
 
-class Attacking_Midfielder(Attacking):
+class AttackingMidfielder(Attacking):
+    __tablename__ = 'attacking_midfielder'
 
     __mapper_args__ = {
         "polymorphic_identity": 'AM'
     }
 
 
-class Left_Midfielder(Attacking):
+class LeftMidfielder(Attacking):
+    __tablename__ = 'left_midfielder'
 
     __mapper_args__ = {
         "polymorphic_identity": 'LM'
     }
 
 
-class Right_Midfielder(Attacking):
+class RightMidfielder(Attacking):
+    __tablename__ = 'right_midfielder'
 
     __mapper_args__ = {
         "polymorphic_identity": 'RM'
     }
 
 
-class Left_Winger(Attacking):
+class LeftWinger(Attacking):
+    __tablename__ = 'left_winger'
 
     __mapper_args__ = {
         "polymorphic_identity": 'LW'
     }
 
 
-class Right_Winger(Attacking):
+class RightWinger(Attacking):
+    __tablename__ = 'right_winger'
 
     __mapper_args__ = {
         "polymorphic_identity": 'RW'
     }
 
 
-class Wide_Midfielder(Attacking):
+class WideMidfielder(Attacking):
+    __tablename__ = 'wide_midfielder'
 
     __mapper_args__ = {
         "polymorphic_identity": 'WM'
@@ -343,6 +342,7 @@ class Wide_Midfielder(Attacking):
 
 
 class Forward(Attacking):
+    __tablename__ = 'forward'
 
     __mapper_args__ = {
         "polymorphic_identity": 'FW'
