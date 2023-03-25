@@ -1,6 +1,7 @@
-from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy import Column, Integer, ForeignKey
 from sqlalchemy.orm import Mapped, mapped_column
+
+from main.extensions import db
 
 
 class Player(db.Model):
