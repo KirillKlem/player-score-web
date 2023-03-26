@@ -127,4 +127,7 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+#Personal test files
 main/count_score.py
+main/test_gk_count_score.py
