@@ -66,6 +66,7 @@ class Goalkeeper(Player):
     passes_launched: Mapped[int]
     passes_launched_completion_percentage: Mapped[float]
     passes_launched_percentage_notGoalKick: Mapped[float]
+    passes_launched_percentage_GoalKick: Mapped[float]
     average_pass_length: Mapped[float]
     average_pass_length_GoalKick: Mapped[float]
     crosses_stopped: Mapped[int]
