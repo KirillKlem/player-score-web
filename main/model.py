@@ -73,6 +73,10 @@ class Goalkeeper(Player):
     def_actions_OutOfPenArea: Mapped[int]
     average_dist_def_actions: Mapped[float]
 
+    __mapper_args__ = {
+        "polymorphic_identity": "GK"
+    }
+
 
 class CenterBack(Player):
     __tablename__ = 'center_back'
@@ -154,8 +158,6 @@ class ModeratelyAttacking(Player):
     air_duels_won_percentage: Mapped[float]
     shot_creating_actions: Mapped[int]
     goal_creating_actions: Mapped[int]
-
-    __mapper_args__ = {"polymorphic_abstract": True}
 
 
 class LeftBack(ModeratelyAttacking):
@@ -291,9 +293,6 @@ class Attacking(Player):
     gca_take_on: Mapped[int]
     gca_shots: Mapped[int]
     gca_fouls_drawn: Mapped[int]
-
-    __mapper_args__ = {"polymorphic_abstract": True}
-
 
 class AttackingMidfielder(Attacking):
     __tablename__ = 'attacking_midfielder'
