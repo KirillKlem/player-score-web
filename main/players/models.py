@@ -8,38 +8,124 @@ class Player(db.Model):
     __tablename__ = 'player'
 
     id: Mapped[int] = Column(Integer, primary_key=True)
-    name: Mapped[str]
+    a_minus_xag: Mapped[float]
     age: Mapped[int]
-    position: Mapped[str] = mapped_column()
-    matches: Mapped[int]
-    minutes: Mapped[int]
-    goals: Mapped[int]
-    assists: Mapped[int]
-    y_cards: Mapped[int]
-    r_cards: Mapped[int]
-    touches: Mapped[int]
-    touches_def_pen: Mapped[int]
-    touches_def_3rd: Mapped[int]
-    touches_mid_3rd: Mapped[int]
+    ast: Mapped[int]
+    att: Mapped[int]
+    carries_1_in_3: Mapped[int]
+    carries_carries: Mapped[int]
+    carries_cpa: Mapped[int]
+    carries_dis: Mapped[int]
+    carries_mis: Mapped[int]
+    carries_prgc: Mapped[int]
+    carries_prgdist: Mapped[int]
+    carries_totdist: Mapped[int]
+    corner_kicks_in: Mapped[int]
+    corner_kicks_out: Mapped[int]
+    corner_kicks_str: Mapped[int]
+    crspa: Mapped[int]
+    expected_npxg_plus_xag: Mapped[float]
+    expected_npxg: Mapped[float]
+    expected_xag: Mapped[float]
+    expected_xg: Mapped[float]
+    kp: Mapped[int]
+    long_att: Mapped[int]
+    long_cmp_percent: Mapped[float]
+    long_cmp: Mapped[int]
+    medium_att: Mapped[int]
+    medium_cmp_percent: Mapped[float]
+    medium_cmp: Mapped[int]
+    name: Mapped[str]
+    nation: Mapped[str]
+    on1_in_3: Mapped[int]
+    on90s: Mapped[float]
+    outcomes_blocks: Mapped[int]
+    outcomes_cmp: Mapped[int]
+    outcomes_off: Mapped[int]
+    pass_types_ck: Mapped[int]
+    pass_types_crs: Mapped[int]
+    pass_types_dead: Mapped[int]
+    pass_types_fk: Mapped[int]
+    pass_types_live: Mapped[int]
+    pass_types_sw: Mapped[int]
+    pass_types_tb: Mapped[int]
+    pass_types_ti: Mapped[int]
+    per_90_minutes_ast: Mapped[float]
+    per_90_minutes_g_minus_pk: Mapped[float]
+    per_90_minutes_g_plus_a_minus_pk: Mapped[float]
+    per_90_minutes_g_plus_a: Mapped[float]
+    per_90_minutes_gls: Mapped[float]
+    per_90_minutes_npxg_plus_xag: Mapped[float]
+    per_90_minutes_npxg: Mapped[float]
+    per_90_minutes_xag: Mapped[float]
+    per_90_minutes_xg_plus_xag: Mapped[float]
+    per_90_minutes_xg: Mapped[float]
+    performance_ast: Mapped[int]
+    performance_crdr: Mapped[int]
+    performance_crdy: Mapped[int]
+    performance_g_minus_pk: Mapped[int]
+    performance_g_plus_a: Mapped[int]
+    performance_gls: Mapped[int]
+    performance_pk: Mapped[int]
+    performance_pkatt: Mapped[int]
+    playing_time_90s: Mapped[float]
+    playing_time_min_percent: Mapped[float]
+    playing_time_min: Mapped[int]
+    playing_time_mn_in_mp: Mapped[int]
+    playing_time_mp: Mapped[int]
+    playing_time_starts: Mapped[int]
+    pos: Mapped[str] = mapped_column()
+    ppa: Mapped[int]
+    prgp: Mapped[int]
+    progression_prgc: Mapped[int]
+    progression_prgp: Mapped[int]
+    progression_prgr: Mapped[int]
+    receiving_prgr: Mapped[int]
+    receiving_rec: Mapped[int]
+    short_att: Mapped[int]
+    short_cmp_percent: Mapped[float]
+    short_cmp: Mapped[int]
+    starts_compl: Mapped[int]
+    starts_mn_in_start: Mapped[int]
+    starts_starts: Mapped[int]
+    subs_mn_in_sub: Mapped[int]
+    subs_subs: Mapped[int]
+    subs_unsub: Mapped[int]
+    take_minus_ons_att: Mapped[int]
+    take_minus_ons_succ_percent: Mapped[float]
+    take_minus_ons_succ: Mapped[int]
+    take_minus_ons_tkld_percent: Mapped[float]
+    take_minus_ons_tkld: Mapped[int]
+    team_success__plus_minus_: Mapped[int]
+    team_success__plus_minus_90: Mapped[float]
+    team_success_on_minus_off: Mapped[float]
+    team_success_ong: Mapped[int]
+    team_success_onga: Mapped[int]
+    team_success_ppm: Mapped[float]
+    team_success_xg_on_minus_off: Mapped[float]
+    team_success_xg_onxg: Mapped[float]
+    team_success_xg_onxga: Mapped[float]
+    team_success_xg_xg_plus_minus_: Mapped[float]
+    team_success_xg_xg_plus_minus_90: Mapped[float]
+    team: Mapped[str]
+    total_att: Mapped[int]
+    total_cmp_percent: Mapped[float]
+    total_cmp: Mapped[int]
+    total_prgdist: Mapped[int]
+    total_totdist: Mapped[int]
     touches_att_3rd: Mapped[int]
     touches_att_pen: Mapped[int]
-    carries: Mapped[int]
-    total_carrying_dist: Mapped[int]
-    progressive_carrying_dist: Mapped[int]
-    progressive_carries: Mapped[int]
-    carries_att_3rd: Mapped[int]
-    miscontrols: Mapped[int]
-    dispossessed: Mapped[int]
-    progressive_passes_rec: Mapped[int]
-    percentage_minutes: Mapped[float]
-    games_start: Mapped[int]
-    points_per_match: Mapped[float]
-    goals_plus_minus_net: Mapped[float]
-    xG_plus_minus_net: Mapped[float]
+    touches_def_3rd: Mapped[int]
+    touches_def_pen: Mapped[int]
+    touches_live: Mapped[int]
+    touches_mid_3rd: Mapped[int]
+    touches_touches: Mapped[int]
+    xa: Mapped[float]
+    xag: Mapped[float]
 
     __mapper_args__ = {
         "polymorphic_identity": "player",
-        "polymorphic_on": position
+        "polymorphic_on": pos
     }
 
     def __repr__(self):
@@ -50,300 +136,293 @@ class Goalkeeper(Player):
     __tablename__ = 'goalkeeper'
 
     id: Mapped[int] = mapped_column(ForeignKey("player.id"), primary_key=True)
-    goals_against: Mapped[int]
-    shots_against: Mapped[int]
-    saves: Mapped[int]
-    saves_percentage: Mapped[float]
-    clean_sheets: Mapped[int]
-    clean_sheets_percentage: Mapped[float]
-    saves_penalty_kicks: Mapped[int]
-    saves_penalty_kicks_percentage: Mapped[float]
-    goals_free_kick_against: Mapped[int]
-    goals_corner_kick_against: Mapped[int]
-    PSxG: Mapped[float]
-    PSxg_per_SoT: Mapped[float]
-    PSxG_plus_minus: Mapped[float]
-    passes_launched: Mapped[int]
-    passes_launched_completion_percentage: Mapped[float]
-    passes_launched_percentage_notGoalKick: Mapped[float]
-    passes_launched_percentage_GoalKick: Mapped[float]
-    average_pass_length: Mapped[float]
-    average_pass_length_GoalKick: Mapped[float]
-    crosses_stopped: Mapped[int]
-    def_actions_OutOfPenArea: Mapped[int]
-    average_dist_def_actions: Mapped[float]
+    crosses_opp: Mapped[int]
+    crosses_stp_percent: Mapped[float]
+    crosses_stp: Mapped[int]
+    expected__in_90: Mapped[float]
+    expected_psxg_in_sot: Mapped[float]
+    expected_psxg_plus_minus_: Mapped[float]
+    expected_psxg: Mapped[float]
+    goal_kicks_att: Mapped[int]
+    goal_kicks_avglen: Mapped[float]
+    goal_kicks_launch_percent: Mapped[float]
+    goals_ck: Mapped[int]
+    goals_fk: Mapped[int]
+    goals_ga: Mapped[int]
+    goals_og: Mapped[int]
+    goals_pka: Mapped[int]
+    launched_att: Mapped[int]
+    launched_cmp_percent: Mapped[float]
+    launched_cmp: Mapped[int]
+    passes_att: Mapped[int]
+    passes_avglen: Mapped[float]
+    passes_launch_percent: Mapped[float]
+    passes_thr: Mapped[int]
+    penalty_kicks_pka: Mapped[int]
+    penalty_kicks_pkatt: Mapped[int]
+    penalty_kicks_pkm: Mapped[int]
+    penalty_kicks_pksv: Mapped[int]
+    penalty_kicks_save_percent: Mapped[float]
+    performance_cs_percent: Mapped[float]
+    performance_cs: Mapped[int]
+    performance_d: Mapped[int]
+    performance_ga: Mapped[int]
+    performance_ga90: Mapped[float]
+    performance_l: Mapped[int]
+    performance_save_percent: Mapped[float]
+    performance_saves: Mapped[int]
+    performance_sota: Mapped[int]
+    performance_w: Mapped[int]
+    sweeper__opa_in_90: Mapped[float]
+    sweeper__opa: Mapped[int]
+    sweeper_avgdist: Mapped[float]
 
     __mapper_args__ = {
         "polymorphic_identity": "GK"
     }
 
 
-class CenterBack(Player):
-    __tablename__ = 'center_back'
+class Defender(Player):
+    __tablename__ = 'defender'
 
     id: Mapped[int] = mapped_column(ForeignKey("player.id"), primary_key=True)
-    passes: Mapped[int]
-    passes_completion: Mapped[float]
-    total_passing_dist: Mapped[int]
-    progressive_passing_disc: Mapped[int]
-    short_passes: Mapped[int]
-    short_passes_completion: Mapped[float]
-    medium_passes: Mapped[int]
-    medium_passes_completion: Mapped[float]
-    long_passes: Mapped[int]
-    long_passes_completion: Mapped[float]
-    progressive_passes: Mapped[int]
-    tackles: Mapped[int]
-    tackles_won: Mapped[int]
-    tackles_def_3rd: Mapped[int]
-    tackles_mid_3rd: Mapped[int]
-    dribblers_tackles_won: Mapped[int]
-    dribblers_tackles_attemped: Mapped[int]
-    dribblers_tackles_won_percentage: Mapped[float]
-    blocks: Mapped[int]
-    shots_blocks: Mapped[int]
-    passes_blocks: Mapped[int]
-    interceptions: Mapped[int]
-    errors: Mapped[int]
-    clearances: Mapped[int]
-    fouls: Mapped[int]
-    recoveries: Mapped[int]
-    air_duels_won: Mapped[int]
-    air_duels_won_percentage: Mapped[float]
-
-    __mapper_args__ = {
-        "polymorphic_identity": "CB"
-    }
-
-
-class ModeratelyAttacking(Player):
-    __abstract__ = True
-
-    id: Mapped[int] = mapped_column(ForeignKey("player.id"), primary_key=True)
-    passes: Mapped[int]
-    passes_completion: Mapped[float]
-    total_passing_dist: Mapped[int]
-    progressive_passing_disc: Mapped[int]
-    short_passes: Mapped[int]
-    short_passes_completion: Mapped[float]
-    medium_passes: Mapped[int]
-    medium_passes_completion: Mapped[float]
-    long_passes: Mapped[int]
-    long_passes_completion: Mapped[float]
-    progressive_passes: Mapped[int]
-    passes_att_3rd: Mapped[int]
-    carries_into_penalty_area: Mapped[int]
-    key_passes: Mapped[int]
-    crosses_penalty_area: Mapped[int]
-    through_passees: Mapped[int]
-    switches: Mapped[int]
-    crosses: Mapped[int]
-    tackles: Mapped[int]
-    tackles_won: Mapped[int]
-    tackles_def_3rd: Mapped[int]
-    tackles_mid_3rd: Mapped[int]
+    aerial_duels_lost: Mapped[int]
+    aerial_duels_won_percent: Mapped[float]
+    aerial_duels_won: Mapped[int]
+    blocks_blocks: Mapped[int]
+    blocks_pass: Mapped[int]
+    blocks_sh: Mapped[int]
+    challenges_att: Mapped[int]
+    challenges_lost: Mapped[int]
+    challenges_tkl_percent: Mapped[float]
+    challenges_tkl: Mapped[int]
+    clr: Mapped[int]
+    err: Mapped[int]
+    int: Mapped[int]
+    n90s: Mapped[float]
+    performance_2crdy: Mapped[int]
+    performance_crs: Mapped[int]
+    performance_fld: Mapped[int]
+    performance_fls: Mapped[int]
+    performance_int: Mapped[int]
+    performance_off: Mapped[int]
+    performance_og: Mapped[int]
+    performance_pkcon: Mapped[int]
+    performance_pkwon: Mapped[int]
+    performance_recov: Mapped[int]
+    performance_tklw: Mapped[int]
     tackles_att_3rd: Mapped[int]
-    dribblers_tackles_won: Mapped[int]
-    dribblers_tackles_attemped: Mapped[int]
-    dribblers_tackles_won_percentage: Mapped[float]
-    blocks: Mapped[int]
-    shots_blocks: Mapped[int]
-    passes_blocks: Mapped[int]
-    interceptions: Mapped[int]
-    errors: Mapped[int]
-    clearances: Mapped[int]
-    fouls: Mapped[int]
-    recoveries: Mapped[int]
-    air_duels_won: Mapped[int]
-    air_duels_won_percentage: Mapped[float]
-    shot_creating_actions: Mapped[int]
-    goal_creating_actions: Mapped[int]
-
-
-class LeftBack(ModeratelyAttacking):
-    __tablename__ = 'left_back'
+    tackles_def_3rd: Mapped[int]
+    tackles_mid_3rd: Mapped[int]
+    tackles_tkl: Mapped[int]
+    tackles_tklw: Mapped[int]
+    tkl_plus_int: Mapped[int]
 
     __mapper_args__ = {
-        "polymorphic_identity": 'LB'
+        "polymorphic_identity": "DF"
     }
 
 
-class RightBack(ModeratelyAttacking):
-    __tablename__ = 'right_back'
-
-    __mapper_args__ = {
-        "polymorphic_identity": 'RB'
-    }
-
-
-class DefensiveMidfielder(ModeratelyAttacking):
-    __tablename__ = 'defensive_midfielder'
-
-    __mapper_args__ = {
-        "polymorphic_identity": 'DM'
-    }
-
-
-class FullBack(ModeratelyAttacking):
-    __tablename__ = 'full_back'
-
-    __mapper_args__ = {
-        "polymorphic_identity": 'FB'
-    }
-
-
-class CentralMidfielder(Player):
-    __tablename__ = 'central_midfielder'
+class Midfielder(Player):
+    __tablename__ = 'midfielder'
 
     id: Mapped[int] = mapped_column(ForeignKey("player.id"), primary_key=True)
-    shots: Mapped[int]
-    shots_on_target: Mapped[int]
-    shots_on_target_percentage: Mapped[float]
+    aerial_duels_lost: Mapped[int]
+    aerial_duels_won_percent: Mapped[float]
+    aerial_duels_won: Mapped[int]
+    air_duels_won_percentage: Mapped[float]
+    air_duels_won: Mapped[int]
     average_shot_distance: Mapped[int]
-    xG: Mapped[float]
-    non_penalty_xG: Mapped[float]
-    goals_minus_xG: Mapped[float]
-    passes: Mapped[int]
-    passes_completion: Mapped[float]
-    total_passing_dist: Mapped[int]
-    progressive_passing_disc: Mapped[int]
-    short_passes: Mapped[int]
-    short_passes_completion: Mapped[float]
-    medium_passes: Mapped[int]
-    medium_passes_completion: Mapped[float]
-    long_passes: Mapped[int]
-    long_passes_completion: Mapped[float]
-    progressive_passes: Mapped[int]
-    passes_att_3rd: Mapped[int]
+    blocks_blocks: Mapped[int]
+    blocks_pass: Mapped[int]
+    blocks_sh: Mapped[int]
+    blocks: Mapped[int]
     carries_into_penalty_area: Mapped[int]
-    key_passes: Mapped[int]
+    challenges_att: Mapped[int]
+    challenges_lost: Mapped[int]
+    challenges_tkl_percent: Mapped[float]
+    challenges_tkl: Mapped[int]
+    clearances: Mapped[int]
+    clr: Mapped[int]
     crosses_penalty_area: Mapped[int]
-    through_passees: Mapped[int]
-    switches: Mapped[int]
     crosses: Mapped[int]
-    tackles: Mapped[int]
-    tackles_won: Mapped[int]
-    tackles_def_3rd: Mapped[int]
-    tackles_mid_3rd: Mapped[int]
-    tackles_att_3rd: Mapped[int]
-    dribblers_tackles_won: Mapped[int]
     dribblers_tackles_attemped: Mapped[int]
     dribblers_tackles_won_percentage: Mapped[float]
-    blocks: Mapped[int]
-    shots_blocks: Mapped[int]
-    passes_blocks: Mapped[int]
-    interceptions: Mapped[int]
+    dribblers_tackles_won: Mapped[int]
+    err: Mapped[int]
     errors: Mapped[int]
-    clearances: Mapped[int]
+    expected_g_minus_xg: Mapped[float]
+    expected_np_g_minus_xg: Mapped[float]
+    expected_npxg_in_sh: Mapped[float]
     fouls: Mapped[int]
-    recoveries: Mapped[int]
-    air_duels_won: Mapped[int]
-    air_duels_won_percentage: Mapped[float]
-    shot_creating_actions: Mapped[int]
-    goal_creating_actions: Mapped[int]
-    gca_ball_live: Mapped[int]
     gca_ball_dead: Mapped[int]
+    gca_ball_live: Mapped[int]
+    gca_fouls_drawn: Mapped[int]
+    gca_gca: Mapped[int]
+    gca_gca90: Mapped[float]
+    gca_shots: Mapped[int]
+    gca_take_on: Mapped[int]
+    gca_types_def: Mapped[int]
+    gca_types_fld: Mapped[int]
+    gca_types_passdead: Mapped[int]
+    gca_types_passlive: Mapped[int]
+    gca_types_sh: Mapped[int]
+    gca_types_to: Mapped[int]
+    goal_creating_actions: Mapped[int]
+    goals_minus_xG: Mapped[float]
+    int: Mapped[int]
+    interceptions: Mapped[int]
+    key_passes: Mapped[int]
+    long_passes_completion: Mapped[float]
+    long_passes: Mapped[int]
+    medium_passes_completion: Mapped[float]
+    medium_passes: Mapped[int]
+    n90s: Mapped[float]
+    non_penalty_xG: Mapped[float]
+    passes_att_3rd: Mapped[int]
+    passes_blocks: Mapped[int]
+    passes_completion: Mapped[float]
+    passes: Mapped[int]
+    performance_2crdy: Mapped[int]
+    performance_crs: Mapped[int]
+    performance_fld: Mapped[int]
+    performance_fls: Mapped[int]
+    performance_int: Mapped[int]
+    performance_off: Mapped[int]
+    performance_og: Mapped[int]
+    performance_pkcon: Mapped[int]
+    performance_pkwon: Mapped[int]
+    performance_recov: Mapped[int]
+    performance_tklw: Mapped[int]
+    progressive_passes: Mapped[int]
+    progressive_passing_disc: Mapped[int]
+    recoveries: Mapped[int]
+    sca_fouls_drawn: Mapped[int]
+    sca_sca: Mapped[int]
+    sca_sca90: Mapped[float]
+    sca_shots: Mapped[int]
+    sca_take_on: Mapped[int]
+    sca_types_def: Mapped[int]
+    sca_types_fld: Mapped[int]
+    sca_types_passdead: Mapped[int]
+    sca_types_passlive: Mapped[int]
+    sca_types_sh: Mapped[int]
+    sca_types_to: Mapped[int]
+    short_passes_completion: Mapped[float]
+    short_passes: Mapped[int]
+    shot_creating_actions: Mapped[int]
+    shots_blocks: Mapped[int]
+    shots_on_target_percentage: Mapped[float]
+    shots_on_target: Mapped[int]
+    shots: Mapped[int]
+    standard_dist: Mapped[float]
+    standard_fk: Mapped[int]
+    standard_g_in_sh: Mapped[float]
+    standard_g_in_sot: Mapped[float]
+    standard_gls: Mapped[int]
+    standard_pk: Mapped[int]
+    standard_pkatt: Mapped[int]
+    standard_sh_in_90: Mapped[float]
+    standard_sh: Mapped[int]
+    standard_sot_in_90: Mapped[float]
+    standard_sot_percent: Mapped[float]
+    standard_sot: Mapped[int]
+    switches: Mapped[int]
+    tackles_att_3rd: Mapped[int]
+    tackles_att_3rd: Mapped[int]
+    tackles_def_3rd: Mapped[int]
+    tackles_def_3rd: Mapped[int]
+    tackles_mid_3rd: Mapped[int]
+    tackles_mid_3rd: Mapped[int]
+    tackles_tkl: Mapped[int]
+    tackles_tklw: Mapped[int]
+    tackles_won: Mapped[int]
+    tackles: Mapped[int]
+    through_passees: Mapped[int]
+    tkl_plus_int: Mapped[int]
+    total_passing_dist: Mapped[int]
+    xG: Mapped[float]
 
     __mapper_args__ = {
-        "polymorphic_identity": "CM"
+        "polymorphic_identity": "MF"
     }
 
 
 class Attacking(Player):
-    __abstract__ = True
+    __tablename__ = 'attacking'
 
     id: Mapped[int] = mapped_column(ForeignKey("player.id"), primary_key=True)
-    shots: Mapped[int]
-    shots_on_target: Mapped[int]
-    shots_on_target_percentage: Mapped[float]
-    average_shot_distance: Mapped[int]
-    xG: Mapped[float]
-    non_penalty_xG: Mapped[float]
-    penalty_made: Mapped[int]
-    penalty_attempted: Mapped[int]
-    goals_minus_xG: Mapped[float]
-    passes: Mapped[int]
-    passes_completion: Mapped[float]
-    total_passing_dist: Mapped[int]
-    progressive_passing_disc: Mapped[int]
-    short_passes: Mapped[int]
-    short_passes_completion: Mapped[float]
-    medium_passes: Mapped[int]
-    medium_passes_completion: Mapped[float]
-    long_passes: Mapped[int]
-    long_passes_completion: Mapped[float]
-    progressive_passes: Mapped[int]
-    passes_att_3rd: Mapped[int]
-    carries_into_penalty_area: Mapped[int]
-    key_passes: Mapped[int]
-    crosses_penalty_area: Mapped[int]
-    through_passees: Mapped[int]
-    switches: Mapped[int]
-    crosses: Mapped[int]
-    air_duels_won: Mapped[int]
     air_duels_won_percentage: Mapped[float]
-    recoveries: Mapped[int]
-    shot_creating_actions: Mapped[int]
-    goal_creating_actions: Mapped[int]
-    gca_ball_live: Mapped[int]
+    air_duels_won: Mapped[int]
+    average_shot_distance: Mapped[int]
+    carries_into_penalty_area: Mapped[int]
+    crosses_penalty_area: Mapped[int]
+    crosses: Mapped[int]
+    expected_g_minus_xg: Mapped[float]
+    expected_np_g_minus_xg: Mapped[float]
+    expected_npxg_in_sh: Mapped[float]
     gca_ball_dead: Mapped[int]
-    sca_take_on: Mapped[int]
-    sca_shots: Mapped[int]
-    sca_fouls_drawn: Mapped[int]
-    gca_take_on: Mapped[int]
-    gca_shots: Mapped[int]
+    gca_ball_live: Mapped[int]
     gca_fouls_drawn: Mapped[int]
-
-class AttackingMidfielder(Attacking):
-    __tablename__ = 'attacking_midfielder'
-
-    __mapper_args__ = {
-        "polymorphic_identity": 'AM'
-    }
-
-
-class LeftMidfielder(Attacking):
-    __tablename__ = 'left_midfielder'
-
-    __mapper_args__ = {
-        "polymorphic_identity": 'LM'
-    }
-
-
-class RightMidfielder(Attacking):
-    __tablename__ = 'right_midfielder'
-
-    __mapper_args__ = {
-        "polymorphic_identity": 'RM'
-    }
-
-
-class LeftWinger(Attacking):
-    __tablename__ = 'left_winger'
-
-    __mapper_args__ = {
-        "polymorphic_identity": 'LW'
-    }
-
-
-class RightWinger(Attacking):
-    __tablename__ = 'right_winger'
-
-    __mapper_args__ = {
-        "polymorphic_identity": 'RW'
-    }
-
-
-class WideMidfielder(Attacking):
-    __tablename__ = 'wide_midfielder'
-
-    __mapper_args__ = {
-        "polymorphic_identity": 'WM'
-    }
-
-
-class Forward(Attacking):
-    __tablename__ = 'forward'
+    gca_gca: Mapped[int]
+    gca_gca90: Mapped[float]
+    gca_shots: Mapped[int]
+    gca_take_on: Mapped[int]
+    gca_types_def: Mapped[int]
+    gca_types_fld: Mapped[int]
+    gca_types_passdead: Mapped[int]
+    gca_types_passlive: Mapped[int]
+    gca_types_sh: Mapped[int]
+    gca_types_to: Mapped[int]
+    goal_creating_actions: Mapped[int]
+    goals_minus_xG: Mapped[float]
+    key_passes: Mapped[int]
+    long_passes_completion: Mapped[float]
+    long_passes: Mapped[int]
+    medium_passes_completion: Mapped[float]
+    medium_passes: Mapped[int]
+    non_penalty_xG: Mapped[float]
+    passes_att_3rd: Mapped[int]
+    passes_completion: Mapped[float]
+    passes: Mapped[int]
+    penalty_attempted: Mapped[int]
+    penalty_made: Mapped[int]
+    progressive_passes: Mapped[int]
+    progressive_passing_disc: Mapped[int]
+    recoveries: Mapped[int]
+    sca_fouls_drawn: Mapped[int]
+    sca_sca: Mapped[int]
+    sca_sca90: Mapped[float]
+    sca_shots: Mapped[int]
+    sca_take_on: Mapped[int]
+    sca_types_def: Mapped[int]
+    sca_types_fld: Mapped[int]
+    sca_types_passdead: Mapped[int]
+    sca_types_passlive: Mapped[int]
+    sca_types_sh: Mapped[int]
+    sca_types_to: Mapped[int]
+    short_passes_completion: Mapped[float]
+    short_passes: Mapped[int]
+    shot_creating_actions: Mapped[int]
+    shots_on_target_percentage: Mapped[float]
+    shots_on_target: Mapped[int]
+    shots: Mapped[int]
+    standard_dist: Mapped[float]
+    standard_fk: Mapped[int]
+    standard_g_in_sh: Mapped[float]
+    standard_g_in_sot: Mapped[float]
+    standard_gls: Mapped[int]
+    standard_pk: Mapped[int]
+    standard_pkatt: Mapped[int]
+    standard_sh_in_90: Mapped[float]
+    standard_sh: Mapped[int]
+    standard_sot_in_90: Mapped[float]
+    standard_sot_percent: Mapped[float]
+    standard_sot: Mapped[int]
+    switches: Mapped[int]
+    through_passees: Mapped[int]
+    total_passing_dist: Mapped[int]
+    xG: Mapped[float]
 
     __mapper_args__ = {
         "polymorphic_identity": 'FW'
