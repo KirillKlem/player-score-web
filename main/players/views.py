@@ -18,10 +18,7 @@ def test_player(position):
     }
     position = position.upper()
     if position in models:
-        player = models[position](**{
-            'name':'test',
-            'age':24,
-            'matches':10,
-        })
+        player = models[position](**request.json)
     db.session.add(player)
     db.session.commit()
+    return 'Ok!'
