@@ -1,4 +1,4 @@
-from sqlalchemy import Column, Integer, ForeignKey
+from sqlalchemy import Column, Integer, Float, ForeignKey
 from sqlalchemy.orm import Mapped, mapped_column
 
 from main.extensions import db
@@ -8,120 +8,120 @@ class Player(db.Model):
     __tablename__ = 'player'
 
     id: Mapped[int] = Column(Integer, primary_key=True)
-    a_minus_xag: Mapped[float]
-    age: Mapped[int]
-    ast: Mapped[int]
-    att: Mapped[int]
-    carries_1_in_3: Mapped[int]
-    carries_carries: Mapped[int]
-    carries_cpa: Mapped[int]
-    carries_dis: Mapped[int]
-    carries_mis: Mapped[int]
-    carries_prgc: Mapped[int]
-    carries_prgdist: Mapped[int]
-    carries_totdist: Mapped[int]
-    corner_kicks_in: Mapped[int]
-    corner_kicks_out: Mapped[int]
-    corner_kicks_str: Mapped[int]
-    crspa: Mapped[int]
-    expected_npxg_plus_xag: Mapped[float]
-    expected_npxg: Mapped[float]
-    expected_xag: Mapped[float]
-    expected_xg: Mapped[float]
-    kp: Mapped[int]
-    long_att: Mapped[int]
-    long_cmp_percent: Mapped[float]
-    long_cmp: Mapped[int]
-    medium_att: Mapped[int]
-    medium_cmp_percent: Mapped[float]
-    medium_cmp: Mapped[int]
+    a_minus_xag: Mapped[float] = Column(Float, nullable=True)
+    age: Mapped[int] = Column(Integer, nullable=True)
+    ast: Mapped[int] = Column(Integer, nullable=True)
+    att: Mapped[int] = Column(Integer, nullable=True)
+    carries_1_in_3: Mapped[int] = Column(Integer, nullable=True)
+    carries_carries: Mapped[int] = Column(Integer, nullable=True)
+    carries_cpa: Mapped[int] = Column(Integer, nullable=True)
+    carries_dis: Mapped[int] = Column(Integer, nullable=True)
+    carries_mis: Mapped[int] = Column(Integer, nullable=True)
+    carries_prgc: Mapped[int] = Column(Integer, nullable=True)
+    carries_prgdist: Mapped[int] = Column(Integer, nullable=True)
+    carries_totdist: Mapped[int] = Column(Integer, nullable=True)
+    corner_kicks_in: Mapped[int] = Column(Integer, nullable=True)
+    corner_kicks_out: Mapped[int] = Column(Integer, nullable=True)
+    corner_kicks_str: Mapped[int] = Column(Integer, nullable=True)
+    crspa: Mapped[int] = Column(Integer, nullable=True)
+    expected_npxg_plus_xag: Mapped[float] = Column(Float, nullable=True)
+    expected_npxg: Mapped[float] = Column(Float, nullable=True)
+    expected_xag: Mapped[float] = Column(Float, nullable=True)
+    expected_xg: Mapped[float] = Column(Float, nullable=True)
+    kp: Mapped[int] = Column(Integer, nullable=True)
+    long_att: Mapped[int] = Column(Integer, nullable=True)
+    long_cmp_percent: Mapped[float] = Column(Float, nullable=True)
+    long_cmp: Mapped[int] = Column(Integer, nullable=True)
+    medium_att: Mapped[int] = Column(Integer, nullable=True)
+    medium_cmp_percent: Mapped[float] = Column(Float, nullable=True)
+    medium_cmp: Mapped[int] = Column(Integer, nullable=True)
     name: Mapped[str]
     nation: Mapped[str]
-    on1_in_3: Mapped[int]
-    on90s: Mapped[float]
-    outcomes_blocks: Mapped[int]
-    outcomes_cmp: Mapped[int]
-    outcomes_off: Mapped[int]
-    pass_types_ck: Mapped[int]
-    pass_types_crs: Mapped[int]
-    pass_types_dead: Mapped[int]
-    pass_types_fk: Mapped[int]
-    pass_types_live: Mapped[int]
-    pass_types_sw: Mapped[int]
-    pass_types_tb: Mapped[int]
-    pass_types_ti: Mapped[int]
-    per_90_minutes_ast: Mapped[float]
-    per_90_minutes_g_minus_pk: Mapped[float]
-    per_90_minutes_g_plus_a_minus_pk: Mapped[float]
-    per_90_minutes_g_plus_a: Mapped[float]
-    per_90_minutes_gls: Mapped[float]
-    per_90_minutes_npxg_plus_xag: Mapped[float]
-    per_90_minutes_npxg: Mapped[float]
-    per_90_minutes_xag: Mapped[float]
-    per_90_minutes_xg_plus_xag: Mapped[float]
-    per_90_minutes_xg: Mapped[float]
-    performance_ast: Mapped[int]
-    performance_crdr: Mapped[int]
-    performance_crdy: Mapped[int]
-    performance_g_minus_pk: Mapped[int]
-    performance_g_plus_a: Mapped[int]
-    performance_gls: Mapped[int]
-    performance_pk: Mapped[int]
-    performance_pkatt: Mapped[int]
-    playing_time_90s: Mapped[float]
-    playing_time_min_percent: Mapped[float]
-    playing_time_min: Mapped[int]
-    playing_time_mn_in_mp: Mapped[int]
-    playing_time_mp: Mapped[int]
-    playing_time_starts: Mapped[int]
+    on1_in_3: Mapped[int] = Column(Integer, nullable=True)
+    on90s: Mapped[float] = Column(Float, nullable=True)
+    outcomes_blocks: Mapped[int] = Column(Integer, nullable=True)
+    outcomes_cmp: Mapped[int] = Column(Integer, nullable=True)
+    outcomes_off: Mapped[int] = Column(Integer, nullable=True)
+    pass_types_ck: Mapped[int] = Column(Integer, nullable=True)
+    pass_types_crs: Mapped[int] = Column(Integer, nullable=True)
+    pass_types_dead: Mapped[int] = Column(Integer, nullable=True)
+    pass_types_fk: Mapped[int] = Column(Integer, nullable=True)
+    pass_types_live: Mapped[int] = Column(Integer, nullable=True)
+    pass_types_sw: Mapped[int] = Column(Integer, nullable=True)
+    pass_types_tb: Mapped[int] = Column(Integer, nullable=True)
+    pass_types_ti: Mapped[int] = Column(Integer, nullable=True)
+    per_90_minutes_ast: Mapped[float] = Column(Float, nullable=True)
+    per_90_minutes_g_minus_pk: Mapped[float] = Column(Float, nullable=True)
+    per_90_minutes_g_plus_a_minus_pk: Mapped[float] = Column(Float, nullable=True)
+    per_90_minutes_g_plus_a: Mapped[float] = Column(Float, nullable=True)
+    per_90_minutes_gls: Mapped[float] = Column(Float, nullable=True)
+    per_90_minutes_npxg_plus_xag: Mapped[float] = Column(Float, nullable=True)
+    per_90_minutes_npxg: Mapped[float] = Column(Float, nullable=True)
+    per_90_minutes_xag: Mapped[float] = Column(Float, nullable=True)
+    per_90_minutes_xg_plus_xag: Mapped[float] = Column(Float, nullable=True)
+    per_90_minutes_xg: Mapped[float] = Column(Float, nullable=True)
+    performance_ast: Mapped[int] = Column(Integer, nullable=True)
+    performance_crdr: Mapped[int] = Column(Integer, nullable=True)
+    performance_crdy: Mapped[int] = Column(Integer, nullable=True)
+    performance_g_minus_pk: Mapped[int] = Column(Integer, nullable=True)
+    performance_g_plus_a: Mapped[int] = Column(Integer, nullable=True)
+    performance_gls: Mapped[int] = Column(Integer, nullable=True)
+    performance_pk: Mapped[int] = Column(Integer, nullable=True)
+    performance_pkatt: Mapped[int] = Column(Integer, nullable=True)
+    playing_time_90s: Mapped[float] = Column(Float, nullable=True)
+    playing_time_min_percent: Mapped[float] = Column(Float, nullable=True)
+    playing_time_min: Mapped[int] = Column(Integer, nullable=True)
+    playing_time_mn_in_mp: Mapped[int] = Column(Integer, nullable=True)
+    playing_time_mp: Mapped[int] = Column(Integer, nullable=True)
+    playing_time_starts: Mapped[int] = Column(Integer, nullable=True)
     pos: Mapped[str] = mapped_column()
-    ppa: Mapped[int]
-    prgp: Mapped[int]
-    progression_prgc: Mapped[int]
-    progression_prgp: Mapped[int]
-    progression_prgr: Mapped[int]
-    receiving_prgr: Mapped[int]
-    receiving_rec: Mapped[int]
-    short_att: Mapped[int]
-    short_cmp_percent: Mapped[float]
-    short_cmp: Mapped[int]
-    starts_compl: Mapped[int]
-    starts_mn_in_start: Mapped[int]
-    starts_starts: Mapped[int]
-    subs_mn_in_sub: Mapped[int]
-    subs_subs: Mapped[int]
-    subs_unsub: Mapped[int]
-    take_minus_ons_att: Mapped[int]
-    take_minus_ons_succ_percent: Mapped[float]
-    take_minus_ons_succ: Mapped[int]
-    take_minus_ons_tkld_percent: Mapped[float]
-    take_minus_ons_tkld: Mapped[int]
-    team_success__plus_minus_: Mapped[int]
-    team_success__plus_minus_90: Mapped[float]
-    team_success_on_minus_off: Mapped[float]
-    team_success_ong: Mapped[int]
-    team_success_onga: Mapped[int]
-    team_success_ppm: Mapped[float]
-    team_success_xg_on_minus_off: Mapped[float]
-    team_success_xg_onxg: Mapped[float]
-    team_success_xg_onxga: Mapped[float]
-    team_success_xg_xg_plus_minus_: Mapped[float]
-    team_success_xg_xg_plus_minus_90: Mapped[float]
+    ppa: Mapped[int] = Column(Integer, nullable=True)
+    prgp: Mapped[int] = Column(Integer, nullable=True)
+    progression_prgc: Mapped[int] = Column(Integer, nullable=True)
+    progression_prgp: Mapped[int] = Column(Integer, nullable=True)
+    progression_prgr: Mapped[int] = Column(Integer, nullable=True)
+    receiving_prgr: Mapped[int] = Column(Integer, nullable=True)
+    receiving_rec: Mapped[int] = Column(Integer, nullable=True)
+    short_att: Mapped[int] = Column(Integer, nullable=True)
+    short_cmp_percent: Mapped[float] = Column(Float, nullable=True)
+    short_cmp: Mapped[int] = Column(Integer, nullable=True)
+    starts_compl: Mapped[int] = Column(Integer, nullable=True)
+    starts_mn_in_start: Mapped[int] = Column(Integer, nullable=True)
+    starts_starts: Mapped[int] = Column(Integer, nullable=True)
+    subs_mn_in_sub: Mapped[int] = Column(Integer, nullable=True)
+    subs_subs: Mapped[int] = Column(Integer, nullable=True)
+    subs_unsub: Mapped[int] = Column(Integer, nullable=True)
+    take_minus_ons_att: Mapped[int] = Column(Integer, nullable=True)
+    take_minus_ons_succ_percent: Mapped[float] = Column(Float, nullable=True)
+    take_minus_ons_succ: Mapped[int] = Column(Integer, nullable=True)
+    take_minus_ons_tkld_percent: Mapped[float] = Column(Float, nullable=True)
+    take_minus_ons_tkld: Mapped[int] = Column(Integer, nullable=True)
+    team_success__plus_minus_: Mapped[int] = Column(Integer, nullable=True)
+    team_success__plus_minus_90: Mapped[float] = Column(Float, nullable=True)
+    team_success_on_minus_off: Mapped[float] = Column(Float, nullable=True)
+    team_success_ong: Mapped[int] = Column(Integer, nullable=True)
+    team_success_onga: Mapped[int] = Column(Integer, nullable=True)
+    team_success_ppm: Mapped[float] = Column(Float, nullable=True)
+    team_success_xg_on_minus_off: Mapped[float] = Column(Float, nullable=True)
+    team_success_xg_onxg: Mapped[float] = Column(Float, nullable=True)
+    team_success_xg_onxga: Mapped[float] = Column(Float, nullable=True)
+    team_success_xg_xg_plus_minus_: Mapped[float] = Column(Float, nullable=True)
+    team_success_xg_xg_plus_minus_90: Mapped[float] = Column(Float, nullable=True)
     team: Mapped[str]
-    total_att: Mapped[int]
-    total_cmp_percent: Mapped[float]
-    total_cmp: Mapped[int]
-    total_prgdist: Mapped[int]
-    total_totdist: Mapped[int]
-    touches_att_3rd: Mapped[int]
-    touches_att_pen: Mapped[int]
-    touches_def_3rd: Mapped[int]
-    touches_def_pen: Mapped[int]
-    touches_live: Mapped[int]
-    touches_mid_3rd: Mapped[int]
-    touches_touches: Mapped[int]
-    xa: Mapped[float]
-    xag: Mapped[float]
+    total_att: Mapped[int] = Column(Integer, nullable=True)
+    total_cmp_percent: Mapped[float] = Column(Float, nullable=True)
+    total_cmp: Mapped[int] = Column(Integer, nullable=True)
+    total_prgdist: Mapped[int] = Column(Integer, nullable=True)
+    total_totdist: Mapped[int] = Column(Integer, nullable=True)
+    touches_att_3rd: Mapped[int] = Column(Integer, nullable=True)
+    touches_att_pen: Mapped[int] = Column(Integer, nullable=True)
+    touches_def_3rd: Mapped[int] = Column(Integer, nullable=True)
+    touches_def_pen: Mapped[int] = Column(Integer, nullable=True)
+    touches_live: Mapped[int] = Column(Integer, nullable=True)
+    touches_mid_3rd: Mapped[int] = Column(Integer, nullable=True)
+    touches_touches: Mapped[int] = Column(Integer, nullable=True)
+    xa: Mapped[float] = Column(Float, nullable=True)
+    xag: Mapped[float] = Column(Float, nullable=True)
 
     __mapper_args__ = {
         "polymorphic_identity": "player",
@@ -136,46 +136,46 @@ class Goalkeeper(Player):
     __tablename__ = 'goalkeeper'
 
     id: Mapped[int] = mapped_column(ForeignKey("player.id"), primary_key=True)
-    crosses_opp: Mapped[int]
-    crosses_stp_percent: Mapped[float]
-    crosses_stp: Mapped[int]
-    expected__in_90: Mapped[float]
-    expected_psxg_in_sot: Mapped[float]
-    expected_psxg_plus_minus_: Mapped[float]
-    expected_psxg: Mapped[float]
-    goal_kicks_att: Mapped[int]
-    goal_kicks_avglen: Mapped[float]
-    goal_kicks_launch_percent: Mapped[float]
-    goals_ck: Mapped[int]
-    goals_fk: Mapped[int]
-    goals_ga: Mapped[int]
-    goals_og: Mapped[int]
-    goals_pka: Mapped[int]
-    launched_att: Mapped[int]
-    launched_cmp_percent: Mapped[float]
-    launched_cmp: Mapped[int]
-    passes_att: Mapped[int]
-    passes_avglen: Mapped[float]
-    passes_launch_percent: Mapped[float]
-    passes_thr: Mapped[int]
-    penalty_kicks_pka: Mapped[int]
-    penalty_kicks_pkatt: Mapped[int]
-    penalty_kicks_pkm: Mapped[int]
-    penalty_kicks_pksv: Mapped[int]
-    penalty_kicks_save_percent: Mapped[float]
-    performance_cs_percent: Mapped[float]
-    performance_cs: Mapped[int]
-    performance_d: Mapped[int]
-    performance_ga: Mapped[int]
-    performance_ga90: Mapped[float]
-    performance_l: Mapped[int]
-    performance_save_percent: Mapped[float]
-    performance_saves: Mapped[int]
-    performance_sota: Mapped[int]
-    performance_w: Mapped[int]
-    sweeper__opa_in_90: Mapped[float]
-    sweeper__opa: Mapped[int]
-    sweeper_avgdist: Mapped[float]
+    crosses_opp: Mapped[int] = Column(Integer, nullable=True)
+    crosses_stp_percent: Mapped[float] = Column(Float, nullable=True)
+    crosses_stp: Mapped[int] = Column(Integer, nullable=True)
+    expected__in_90: Mapped[float] = Column(Float, nullable=True)
+    expected_psxg_in_sot: Mapped[float] = Column(Float, nullable=True)
+    expected_psxg_plus_minus_: Mapped[float] = Column(Float, nullable=True)
+    expected_psxg: Mapped[float] = Column(Float, nullable=True)
+    goal_kicks_att: Mapped[int] = Column(Integer, nullable=True)
+    goal_kicks_avglen: Mapped[float] = Column(Float, nullable=True)
+    goal_kicks_launch_percent: Mapped[float] = Column(Float, nullable=True)
+    goals_ck: Mapped[int] = Column(Integer, nullable=True)
+    goals_fk: Mapped[int] = Column(Integer, nullable=True)
+    goals_ga: Mapped[int] = Column(Integer, nullable=True)
+    goals_og: Mapped[int] = Column(Integer, nullable=True)
+    goals_pka: Mapped[int] = Column(Integer, nullable=True)
+    launched_att: Mapped[int] = Column(Integer, nullable=True)
+    launched_cmp_percent: Mapped[float] = Column(Float, nullable=True)
+    launched_cmp: Mapped[int] = Column(Integer, nullable=True)
+    passes_att: Mapped[int] = Column(Integer, nullable=True)
+    passes_avglen: Mapped[float] = Column(Float, nullable=True)
+    passes_launch_percent: Mapped[float] = Column(Float, nullable=True)
+    passes_thr: Mapped[int] = Column(Integer, nullable=True)
+    penalty_kicks_pka: Mapped[int] = Column(Integer, nullable=True)
+    penalty_kicks_pkatt: Mapped[int] = Column(Integer, nullable=True)
+    penalty_kicks_pkm: Mapped[int] = Column(Integer, nullable=True)
+    penalty_kicks_pksv: Mapped[int] = Column(Integer, nullable=True)
+    penalty_kicks_save_percent: Mapped[float] = Column(Float, nullable=True)
+    performance_cs_percent: Mapped[float] = Column(Float, nullable=True)
+    performance_cs: Mapped[int] = Column(Integer, nullable=True)
+    performance_d: Mapped[int] = Column(Integer, nullable=True)
+    performance_ga: Mapped[int] = Column(Integer, nullable=True)
+    performance_ga90: Mapped[float] = Column(Float, nullable=True)
+    performance_l: Mapped[int] = Column(Integer, nullable=True)
+    performance_save_percent: Mapped[float] = Column(Float, nullable=True)
+    performance_saves: Mapped[int] = Column(Integer, nullable=True)
+    performance_sota: Mapped[int] = Column(Integer, nullable=True)
+    performance_w: Mapped[int] = Column(Integer, nullable=True)
+    sweeper__opa_in_90: Mapped[float] = Column(Float, nullable=True)
+    sweeper__opa: Mapped[int] = Column(Integer, nullable=True)
+    sweeper_avgdist: Mapped[float] = Column(Float, nullable=True)
 
     __mapper_args__ = {
         "polymorphic_identity": "GK"
@@ -186,36 +186,36 @@ class Defender(Player):
     __tablename__ = 'defender'
 
     id: Mapped[int] = mapped_column(ForeignKey("player.id"), primary_key=True)
-    aerial_duels_lost: Mapped[int]
-    aerial_duels_won_percent: Mapped[float]
-    aerial_duels_won: Mapped[int]
-    blocks_blocks: Mapped[int]
-    blocks_pass: Mapped[int]
-    blocks_sh: Mapped[int]
-    challenges_att: Mapped[int]
-    challenges_lost: Mapped[int]
-    challenges_tkl_percent: Mapped[float]
-    challenges_tkl: Mapped[int]
-    clr: Mapped[int]
-    err: Mapped[int]
-    int: Mapped[int]
-    performance_2crdy: Mapped[int]
-    performance_crs: Mapped[int]
-    performance_fld: Mapped[int]
-    performance_fls: Mapped[int]
-    performance_int: Mapped[int]
-    performance_off: Mapped[int]
-    performance_og: Mapped[int]
-    performance_pkcon: Mapped[int]
-    performance_pkwon: Mapped[int]
-    performance_recov: Mapped[int]
-    performance_tklw: Mapped[int]
-    tackles_att_3rd: Mapped[int]
-    tackles_def_3rd: Mapped[int]
-    tackles_mid_3rd: Mapped[int]
-    tackles_tkl: Mapped[int]
-    tackles_tklw: Mapped[int]
-    tkl_plus_int: Mapped[int]
+    aerial_duels_lost: Mapped[int] = Column(Integer, nullable=True)
+    aerial_duels_won_percent: Mapped[float] = Column(Float, nullable=True)
+    aerial_duels_won: Mapped[int] = Column(Integer, nullable=True)
+    blocks_blocks: Mapped[int] = Column(Integer, nullable=True)
+    blocks_pass: Mapped[int] = Column(Integer, nullable=True)
+    blocks_sh: Mapped[int] = Column(Integer, nullable=True)
+    challenges_att: Mapped[int] = Column(Integer, nullable=True)
+    challenges_lost: Mapped[int] = Column(Integer, nullable=True)
+    challenges_tkl_percent: Mapped[float] = Column(Float, nullable=True)
+    challenges_tkl: Mapped[int] = Column(Integer, nullable=True)
+    clr: Mapped[int] = Column(Integer, nullable=True)
+    err: Mapped[int] = Column(Integer, nullable=True)
+    int: Mapped[int] = Column(Integer, nullable=True)
+    performance_2crdy: Mapped[int] = Column(Integer, nullable=True)
+    performance_crs: Mapped[int] = Column(Integer, nullable=True)
+    performance_fld: Mapped[int] = Column(Integer, nullable=True)
+    performance_fls: Mapped[int] = Column(Integer, nullable=True)
+    performance_int: Mapped[int] = Column(Integer, nullable=True)
+    performance_off: Mapped[int] = Column(Integer, nullable=True)
+    performance_og: Mapped[int] = Column(Integer, nullable=True)
+    performance_pkcon: Mapped[int] = Column(Integer, nullable=True)
+    performance_pkwon: Mapped[int] = Column(Integer, nullable=True)
+    performance_recov: Mapped[int] = Column(Integer, nullable=True)
+    performance_tklw: Mapped[int] = Column(Integer, nullable=True)
+    tackles_att_3rd: Mapped[int] = Column(Integer, nullable=True)
+    tackles_def_3rd: Mapped[int] = Column(Integer, nullable=True)
+    tackles_mid_3rd: Mapped[int] = Column(Integer, nullable=True)
+    tackles_tkl: Mapped[int] = Column(Integer, nullable=True)
+    tackles_tklw: Mapped[int] = Column(Integer, nullable=True)
+    tkl_plus_int: Mapped[int] = Column(Integer, nullable=True)
 
     __mapper_args__ = {
         "polymorphic_identity": "DF"
@@ -226,121 +226,121 @@ class Midfielder(Player):
     __tablename__ = 'midfielder'
 
     id: Mapped[int] = mapped_column(ForeignKey("player.id"), primary_key=True)
-    aerial_duels_lost: Mapped[int]
-    aerial_duels_won_percent: Mapped[float]
-    aerial_duels_won: Mapped[int]
-    air_duels_won_percentage: Mapped[float]
-    air_duels_won: Mapped[int]
-    average_shot_distance: Mapped[int]
-    blocks_blocks: Mapped[int]
-    blocks_pass: Mapped[int]
-    blocks_sh: Mapped[int]
-    blocks: Mapped[int]
-    carries_into_penalty_area: Mapped[int]
-    challenges_att: Mapped[int]
-    challenges_lost: Mapped[int]
-    challenges_tkl_percent: Mapped[float]
-    challenges_tkl: Mapped[int]
-    clearances: Mapped[int]
-    clr: Mapped[int]
-    crosses_penalty_area: Mapped[int]
-    crosses: Mapped[int]
-    dribblers_tackles_attemped: Mapped[int]
-    dribblers_tackles_won_percentage: Mapped[float]
-    dribblers_tackles_won: Mapped[int]
-    err: Mapped[int]
-    errors: Mapped[int]
-    expected_g_minus_xg: Mapped[float]
-    expected_np_g_minus_xg: Mapped[float]
-    expected_npxg_in_sh: Mapped[float]
-    fouls: Mapped[int]
-    gca_ball_dead: Mapped[int]
-    gca_ball_live: Mapped[int]
-    gca_fouls_drawn: Mapped[int]
-    gca_gca: Mapped[int]
-    gca_gca90: Mapped[float]
-    gca_shots: Mapped[int]
-    gca_take_on: Mapped[int]
-    gca_types_def: Mapped[int]
-    gca_types_fld: Mapped[int]
-    gca_types_passdead: Mapped[int]
-    gca_types_passlive: Mapped[int]
-    gca_types_sh: Mapped[int]
-    gca_types_to: Mapped[int]
-    goal_creating_actions: Mapped[int]
-    goals_minus_xG: Mapped[float]
-    int: Mapped[int]
-    interceptions: Mapped[int]
-    key_passes: Mapped[int]
-    long_passes_completion: Mapped[float]
-    long_passes: Mapped[int]
-    medium_passes_completion: Mapped[float]
-    medium_passes: Mapped[int]
-    n90s: Mapped[float]
-    non_penalty_xG: Mapped[float]
-    passes_att_3rd: Mapped[int]
-    passes_blocks: Mapped[int]
-    passes_completion: Mapped[float]
-    passes: Mapped[int]
-    performance_2crdy: Mapped[int]
-    performance_crs: Mapped[int]
-    performance_fld: Mapped[int]
-    performance_fls: Mapped[int]
-    performance_int: Mapped[int]
-    performance_off: Mapped[int]
-    performance_og: Mapped[int]
-    performance_pkcon: Mapped[int]
-    performance_pkwon: Mapped[int]
-    performance_recov: Mapped[int]
-    performance_tklw: Mapped[int]
-    progressive_passes: Mapped[int]
-    progressive_passing_disc: Mapped[int]
-    recoveries: Mapped[int]
-    sca_fouls_drawn: Mapped[int]
-    sca_sca: Mapped[int]
-    sca_sca90: Mapped[float]
-    sca_shots: Mapped[int]
-    sca_take_on: Mapped[int]
-    sca_types_def: Mapped[int]
-    sca_types_fld: Mapped[int]
-    sca_types_passdead: Mapped[int]
-    sca_types_passlive: Mapped[int]
-    sca_types_sh: Mapped[int]
-    sca_types_to: Mapped[int]
-    short_passes_completion: Mapped[float]
-    short_passes: Mapped[int]
-    shot_creating_actions: Mapped[int]
-    shots_blocks: Mapped[int]
-    shots_on_target_percentage: Mapped[float]
-    shots_on_target: Mapped[int]
-    shots: Mapped[int]
-    standard_dist: Mapped[float]
-    standard_fk: Mapped[int]
-    standard_g_in_sh: Mapped[float]
-    standard_g_in_sot: Mapped[float]
-    standard_gls: Mapped[int]
-    standard_pk: Mapped[int]
-    standard_pkatt: Mapped[int]
-    standard_sh_in_90: Mapped[float]
-    standard_sh: Mapped[int]
-    standard_sot_in_90: Mapped[float]
-    standard_sot_percent: Mapped[float]
-    standard_sot: Mapped[int]
-    switches: Mapped[int]
-    tackles_att_3rd: Mapped[int]
-    tackles_att_3rd: Mapped[int]
-    tackles_def_3rd: Mapped[int]
-    tackles_def_3rd: Mapped[int]
-    tackles_mid_3rd: Mapped[int]
-    tackles_mid_3rd: Mapped[int]
-    tackles_tkl: Mapped[int]
-    tackles_tklw: Mapped[int]
-    tackles_won: Mapped[int]
-    tackles: Mapped[int]
-    through_passees: Mapped[int]
-    tkl_plus_int: Mapped[int]
-    total_passing_dist: Mapped[int]
-    xG: Mapped[float]
+    aerial_duels_lost: Mapped[int] = Column(Integer, nullable=True)
+    aerial_duels_won_percent: Mapped[float] = Column(Float, nullable=True)
+    aerial_duels_won: Mapped[int] = Column(Integer, nullable=True)
+    air_duels_won_percentage: Mapped[float] = Column(Float, nullable=True)
+    air_duels_won: Mapped[int] = Column(Integer, nullable=True)
+    average_shot_distance: Mapped[int] = Column(Integer, nullable=True)
+    blocks_blocks: Mapped[int] = Column(Integer, nullable=True)
+    blocks_pass: Mapped[int] = Column(Integer, nullable=True)
+    blocks_sh: Mapped[int] = Column(Integer, nullable=True)
+    blocks: Mapped[int] = Column(Integer, nullable=True)
+    carries_into_penalty_area: Mapped[int] = Column(Integer, nullable=True)
+    challenges_att: Mapped[int] = Column(Integer, nullable=True)
+    challenges_lost: Mapped[int] = Column(Integer, nullable=True)
+    challenges_tkl_percent: Mapped[float] = Column(Float, nullable=True)
+    challenges_tkl: Mapped[int] = Column(Integer, nullable=True)
+    clearances: Mapped[int] = Column(Integer, nullable=True)
+    clr: Mapped[int] = Column(Integer, nullable=True)
+    crosses_penalty_area: Mapped[int] = Column(Integer, nullable=True)
+    crosses: Mapped[int] = Column(Integer, nullable=True)
+    dribblers_tackles_attemped: Mapped[int] = Column(Integer, nullable=True)
+    dribblers_tackles_won_percentage: Mapped[float] = Column(Float, nullable=True)
+    dribblers_tackles_won: Mapped[int] = Column(Integer, nullable=True)
+    err: Mapped[int] = Column(Integer, nullable=True)
+    errors: Mapped[int] = Column(Integer, nullable=True)
+    expected_g_minus_xg: Mapped[float] = Column(Float, nullable=True)
+    expected_np_g_minus_xg: Mapped[float] = Column(Float, nullable=True)
+    expected_npxg_in_sh: Mapped[float] = Column(Float, nullable=True)
+    fouls: Mapped[int] = Column(Integer, nullable=True)
+    gca_ball_dead: Mapped[int] = Column(Integer, nullable=True)
+    gca_ball_live: Mapped[int] = Column(Integer, nullable=True)
+    gca_fouls_drawn: Mapped[int] = Column(Integer, nullable=True)
+    gca_gca: Mapped[int] = Column(Integer, nullable=True)
+    gca_gca90: Mapped[float] = Column(Float, nullable=True)
+    gca_shots: Mapped[int] = Column(Integer, nullable=True)
+    gca_take_on: Mapped[int] = Column(Integer, nullable=True)
+    gca_types_def: Mapped[int] = Column(Integer, nullable=True)
+    gca_types_fld: Mapped[int] = Column(Integer, nullable=True)
+    gca_types_passdead: Mapped[int] = Column(Integer, nullable=True)
+    gca_types_passlive: Mapped[int] = Column(Integer, nullable=True)
+    gca_types_sh: Mapped[int] = Column(Integer, nullable=True)
+    gca_types_to: Mapped[int] = Column(Integer, nullable=True)
+    goal_creating_actions: Mapped[int] = Column(Integer, nullable=True)
+    goals_minus_xG: Mapped[float] = Column(Float, nullable=True)
+    int: Mapped[int] = Column(Integer, nullable=True)
+    interceptions: Mapped[int] = Column(Integer, nullable=True)
+    key_passes: Mapped[int] = Column(Integer, nullable=True)
+    long_passes_completion: Mapped[float] = Column(Float, nullable=True)
+    long_passes: Mapped[int] = Column(Integer, nullable=True)
+    medium_passes_completion: Mapped[float] = Column(Float, nullable=True)
+    medium_passes: Mapped[int] = Column(Integer, nullable=True)
+    n90s: Mapped[float] = Column(Float, nullable=True)
+    non_penalty_xG: Mapped[float] = Column(Float, nullable=True)
+    passes_att_3rd: Mapped[int] = Column(Integer, nullable=True)
+    passes_blocks: Mapped[int] = Column(Integer, nullable=True)
+    passes_completion: Mapped[float] = Column(Float, nullable=True)
+    passes: Mapped[int] = Column(Integer, nullable=True)
+    performance_2crdy: Mapped[int] = Column(Integer, nullable=True)
+    performance_crs: Mapped[int] = Column(Integer, nullable=True)
+    performance_fld: Mapped[int] = Column(Integer, nullable=True)
+    performance_fls: Mapped[int] = Column(Integer, nullable=True)
+    performance_int: Mapped[int] = Column(Integer, nullable=True)
+    performance_off: Mapped[int] = Column(Integer, nullable=True)
+    performance_og: Mapped[int] = Column(Integer, nullable=True)
+    performance_pkcon: Mapped[int] = Column(Integer, nullable=True)
+    performance_pkwon: Mapped[int] = Column(Integer, nullable=True)
+    performance_recov: Mapped[int] = Column(Integer, nullable=True)
+    performance_tklw: Mapped[int] = Column(Integer, nullable=True)
+    progressive_passes: Mapped[int] = Column(Integer, nullable=True)
+    progressive_passing_disc: Mapped[int] = Column(Integer, nullable=True)
+    recoveries: Mapped[int] = Column(Integer, nullable=True)
+    sca_fouls_drawn: Mapped[int] = Column(Integer, nullable=True)
+    sca_sca: Mapped[int] = Column(Integer, nullable=True)
+    sca_sca90: Mapped[float] = Column(Float, nullable=True)
+    sca_shots: Mapped[int] = Column(Integer, nullable=True)
+    sca_take_on: Mapped[int] = Column(Integer, nullable=True)
+    sca_types_def: Mapped[int] = Column(Integer, nullable=True)
+    sca_types_fld: Mapped[int] = Column(Integer, nullable=True)
+    sca_types_passdead: Mapped[int] = Column(Integer, nullable=True)
+    sca_types_passlive: Mapped[int] = Column(Integer, nullable=True)
+    sca_types_sh: Mapped[int] = Column(Integer, nullable=True)
+    sca_types_to: Mapped[int] = Column(Integer, nullable=True)
+    short_passes_completion: Mapped[float] = Column(Float, nullable=True)
+    short_passes: Mapped[int] = Column(Integer, nullable=True)
+    shot_creating_actions: Mapped[int] = Column(Integer, nullable=True)
+    shots_blocks: Mapped[int] = Column(Integer, nullable=True)
+    shots_on_target_percentage: Mapped[float] = Column(Float, nullable=True)
+    shots_on_target: Mapped[int] = Column(Integer, nullable=True)
+    shots: Mapped[int] = Column(Integer, nullable=True)
+    standard_dist: Mapped[float] = Column(Float, nullable=True)
+    standard_fk: Mapped[int] = Column(Integer, nullable=True)
+    standard_g_in_sh: Mapped[float] = Column(Float, nullable=True)
+    standard_g_in_sot: Mapped[float] = Column(Float, nullable=True)
+    standard_gls: Mapped[int] = Column(Integer, nullable=True)
+    standard_pk: Mapped[int] = Column(Integer, nullable=True)
+    standard_pkatt: Mapped[int] = Column(Integer, nullable=True)
+    standard_sh_in_90: Mapped[float] = Column(Float, nullable=True)
+    standard_sh: Mapped[int] = Column(Integer, nullable=True)
+    standard_sot_in_90: Mapped[float] = Column(Float, nullable=True)
+    standard_sot_percent: Mapped[float] = Column(Float, nullable=True)
+    standard_sot: Mapped[int] = Column(Integer, nullable=True)
+    switches: Mapped[int] = Column(Integer, nullable=True)
+    tackles_att_3rd: Mapped[int] = Column(Integer, nullable=True)
+    tackles_att_3rd: Mapped[int] = Column(Integer, nullable=True)
+    tackles_def_3rd: Mapped[int] = Column(Integer, nullable=True)
+    tackles_def_3rd: Mapped[int] = Column(Integer, nullable=True)
+    tackles_mid_3rd: Mapped[int] = Column(Integer, nullable=True)
+    tackles_mid_3rd: Mapped[int] = Column(Integer, nullable=True)
+    tackles_tkl: Mapped[int] = Column(Integer, nullable=True)
+    tackles_tklw: Mapped[int] = Column(Integer, nullable=True)
+    tackles_won: Mapped[int] = Column(Integer, nullable=True)
+    tackles: Mapped[int] = Column(Integer, nullable=True)
+    through_passees: Mapped[int] = Column(Integer, nullable=True)
+    tkl_plus_int: Mapped[int] = Column(Integer, nullable=True)
+    total_passing_dist: Mapped[int] = Column(Integer, nullable=True)
+    xG: Mapped[float] = Column(Float, nullable=True)
 
     __mapper_args__ = {
         "polymorphic_identity": "MF"
@@ -351,77 +351,77 @@ class Attacking(Player):
     __tablename__ = 'attacking'
 
     id: Mapped[int] = mapped_column(ForeignKey("player.id"), primary_key=True)
-    air_duels_won_percentage: Mapped[float]
-    air_duels_won: Mapped[int]
-    average_shot_distance: Mapped[int]
-    carries_into_penalty_area: Mapped[int]
-    crosses_penalty_area: Mapped[int]
-    crosses: Mapped[int]
-    expected_g_minus_xg: Mapped[float]
-    expected_np_g_minus_xg: Mapped[float]
-    expected_npxg_in_sh: Mapped[float]
-    gca_ball_dead: Mapped[int]
-    gca_ball_live: Mapped[int]
-    gca_fouls_drawn: Mapped[int]
-    gca_gca: Mapped[int]
-    gca_gca90: Mapped[float]
-    gca_shots: Mapped[int]
-    gca_take_on: Mapped[int]
-    gca_types_def: Mapped[int]
-    gca_types_fld: Mapped[int]
-    gca_types_passdead: Mapped[int]
-    gca_types_passlive: Mapped[int]
-    gca_types_sh: Mapped[int]
-    gca_types_to: Mapped[int]
-    goal_creating_actions: Mapped[int]
-    goals_minus_xG: Mapped[float]
-    key_passes: Mapped[int]
-    long_passes_completion: Mapped[float]
-    long_passes: Mapped[int]
-    medium_passes_completion: Mapped[float]
-    medium_passes: Mapped[int]
-    non_penalty_xG: Mapped[float]
-    passes_att_3rd: Mapped[int]
-    passes_completion: Mapped[float]
-    passes: Mapped[int]
-    penalty_attempted: Mapped[int]
-    penalty_made: Mapped[int]
-    progressive_passes: Mapped[int]
-    progressive_passing_disc: Mapped[int]
-    recoveries: Mapped[int]
-    sca_fouls_drawn: Mapped[int]
-    sca_sca: Mapped[int]
-    sca_sca90: Mapped[float]
-    sca_shots: Mapped[int]
-    sca_take_on: Mapped[int]
-    sca_types_def: Mapped[int]
-    sca_types_fld: Mapped[int]
-    sca_types_passdead: Mapped[int]
-    sca_types_passlive: Mapped[int]
-    sca_types_sh: Mapped[int]
-    sca_types_to: Mapped[int]
-    short_passes_completion: Mapped[float]
-    short_passes: Mapped[int]
-    shot_creating_actions: Mapped[int]
-    shots_on_target_percentage: Mapped[float]
-    shots_on_target: Mapped[int]
-    shots: Mapped[int]
-    standard_dist: Mapped[float]
-    standard_fk: Mapped[int]
-    standard_g_in_sh: Mapped[float]
-    standard_g_in_sot: Mapped[float]
-    standard_gls: Mapped[int]
-    standard_pk: Mapped[int]
-    standard_pkatt: Mapped[int]
-    standard_sh_in_90: Mapped[float]
-    standard_sh: Mapped[int]
-    standard_sot_in_90: Mapped[float]
-    standard_sot_percent: Mapped[float]
-    standard_sot: Mapped[int]
-    switches: Mapped[int]
-    through_passees: Mapped[int]
-    total_passing_dist: Mapped[int]
-    xG: Mapped[float]
+    air_duels_won_percentage: Mapped[float] = Column(Float, nullable=True)
+    air_duels_won: Mapped[int] = Column(Integer, nullable=True)
+    average_shot_distance: Mapped[int] = Column(Integer, nullable=True)
+    carries_into_penalty_area: Mapped[int] = Column(Integer, nullable=True)
+    crosses_penalty_area: Mapped[int] = Column(Integer, nullable=True)
+    crosses: Mapped[int] = Column(Integer, nullable=True)
+    expected_g_minus_xg: Mapped[float] = Column(Float, nullable=True)
+    expected_np_g_minus_xg: Mapped[float] = Column(Float, nullable=True)
+    expected_npxg_in_sh: Mapped[float] = Column(Float, nullable=True)
+    gca_ball_dead: Mapped[int] = Column(Integer, nullable=True)
+    gca_ball_live: Mapped[int] = Column(Integer, nullable=True)
+    gca_fouls_drawn: Mapped[int] = Column(Integer, nullable=True)
+    gca_gca: Mapped[int] = Column(Integer, nullable=True)
+    gca_gca90: Mapped[float] = Column(Float, nullable=True)
+    gca_shots: Mapped[int] = Column(Integer, nullable=True)
+    gca_take_on: Mapped[int] = Column(Integer, nullable=True)
+    gca_types_def: Mapped[int] = Column(Integer, nullable=True)
+    gca_types_fld: Mapped[int] = Column(Integer, nullable=True)
+    gca_types_passdead: Mapped[int] = Column(Integer, nullable=True)
+    gca_types_passlive: Mapped[int] = Column(Integer, nullable=True)
+    gca_types_sh: Mapped[int] = Column(Integer, nullable=True)
+    gca_types_to: Mapped[int] = Column(Integer, nullable=True)
+    goal_creating_actions: Mapped[int] = Column(Integer, nullable=True)
+    goals_minus_xG: Mapped[float] = Column(Float, nullable=True)
+    key_passes: Mapped[int] = Column(Integer, nullable=True)
+    long_passes_completion: Mapped[float] = Column(Float, nullable=True)
+    long_passes: Mapped[int] = Column(Integer, nullable=True)
+    medium_passes_completion: Mapped[float] = Column(Float, nullable=True)
+    medium_passes: Mapped[int] = Column(Integer, nullable=True)
+    non_penalty_xG: Mapped[float] = Column(Float, nullable=True)
+    passes_att_3rd: Mapped[int] = Column(Integer, nullable=True)
+    passes_completion: Mapped[float] = Column(Float, nullable=True)
+    passes: Mapped[int] = Column(Integer, nullable=True)
+    penalty_attempted: Mapped[int] = Column(Integer, nullable=True)
+    penalty_made: Mapped[int] = Column(Integer, nullable=True)
+    progressive_passes: Mapped[int] = Column(Integer, nullable=True)
+    progressive_passing_disc: Mapped[int] = Column(Integer, nullable=True)
+    recoveries: Mapped[int] = Column(Integer, nullable=True)
+    sca_fouls_drawn: Mapped[int] = Column(Integer, nullable=True)
+    sca_sca: Mapped[int] = Column(Integer, nullable=True)
+    sca_sca90: Mapped[float] = Column(Float, nullable=True)
+    sca_shots: Mapped[int] = Column(Integer, nullable=True)
+    sca_take_on: Mapped[int] = Column(Integer, nullable=True)
+    sca_types_def: Mapped[int] = Column(Integer, nullable=True)
+    sca_types_fld: Mapped[int] = Column(Integer, nullable=True)
+    sca_types_passdead: Mapped[int] = Column(Integer, nullable=True)
+    sca_types_passlive: Mapped[int] = Column(Integer, nullable=True)
+    sca_types_sh: Mapped[int] = Column(Integer, nullable=True)
+    sca_types_to: Mapped[int] = Column(Integer, nullable=True)
+    short_passes_completion: Mapped[float] = Column(Float, nullable=True)
+    short_passes: Mapped[int] = Column(Integer, nullable=True)
+    shot_creating_actions: Mapped[int] = Column(Integer, nullable=True)
+    shots_on_target_percentage: Mapped[float] = Column(Float, nullable=True)
+    shots_on_target: Mapped[int] = Column(Integer, nullable=True)
+    shots: Mapped[int] = Column(Integer, nullable=True)
+    standard_dist: Mapped[float] = Column(Float, nullable=True)
+    standard_fk: Mapped[int] = Column(Integer, nullable=True)
+    standard_g_in_sh: Mapped[float] = Column(Float, nullable=True)
+    standard_g_in_sot: Mapped[float] = Column(Float, nullable=True)
+    standard_gls: Mapped[int] = Column(Integer, nullable=True)
+    standard_pk: Mapped[int] = Column(Integer, nullable=True)
+    standard_pkatt: Mapped[int] = Column(Integer, nullable=True)
+    standard_sh_in_90: Mapped[float] = Column(Float, nullable=True)
+    standard_sh: Mapped[int] = Column(Integer, nullable=True)
+    standard_sot_in_90: Mapped[float] = Column(Float, nullable=True)
+    standard_sot_percent: Mapped[float] = Column(Float, nullable=True)
+    standard_sot: Mapped[int] = Column(Integer, nullable=True)
+    switches: Mapped[int] = Column(Integer, nullable=True)
+    through_passees: Mapped[int] = Column(Integer, nullable=True)
+    total_passing_dist: Mapped[int] = Column(Integer, nullable=True)
+    xG: Mapped[float] = Column(Float, nullable=True)
 
     __mapper_args__ = {
         "polymorphic_identity": 'FW'
