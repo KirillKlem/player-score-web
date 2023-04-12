@@ -1,5 +1,5 @@
 from flask import Flask, request, jsonify
-from main.extensions import db, migrate
+from main.extensions import db, migrate, ma
 import players
 
 
@@ -18,6 +18,7 @@ def create_app(config_object="main.settings"):
 def register_extensions(app):
     db.init_app(app)
     migrate.init_app(app, db)
+    ma.init_app(app)
     return None
 
 def register_blueprints(app):
