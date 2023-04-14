@@ -2,13 +2,34 @@
 <html lang="en">
 
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>{{ title }}</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{ title }}</title>
 </head>
 
 <body>
-    <h1>Здесь когда-то что-то будет...</h1>
+<div class="container py-5">
+  <h1>Лушчие игроки сезона</h1>
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Имя игрока</th>
+          <th scope="col">Команда</th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for player in players %}
+        <tr>
+          <td>{{ player.id }}</td>
+          <td>{{ player.name }}</td>
+          <td>{{ player.team }}</td>
+          <td><a href="{{ url_for('players.get_player_details', id_=player.id) }}" target="_blank">Подробнее</a></td>
+        </tr>
+        {%endfor %}
+      </tbody>
+    </table>
+</div>
 </body>
-
 </html>

@@ -1,4 +1,4 @@
-from flask import Blueprint, request, jsonify
+from flask import Blueprint, request, jsonify, render_template
 from .models import Player
 from main.extensions import db
 from .utils import attribute_names
@@ -23,3 +23,18 @@ def save_player(position):
         db.session.commit()
         return jsonify({'status': 'created'}), 201
     return jsonify({'error': f'Position {position} does not exists'}), 400
+
+
+@blueprint.route('/')
+def get_players_list():
+    players = db.session.execute(db.select(Player)).scalars()
+    title = 'Список игроков'
+    return render_template('index.html', players=players, title=title)
+
+
+@blueprint.route('/<int:id_>')
+def get_player_details(id_):
+    player = db.get_or_404(Player, id_)
+    title = player.name
+    fields = attribute_names(player.__class__)
+    return render_template('detail.html', player=player, title=title, fields=fields, getattr=getattr)
