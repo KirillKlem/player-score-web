@@ -9,7 +9,7 @@ colorama==0.4.6
 environs==9.5.0
 exceptiongroup==1.1.1
 Flask==2.2.3
-Flask-Admin==1.6.1
+Flask-Admin==1.6.0
 flask-marshmallow==0.14.0
 Flask-Migrate==4.0.4
 Flask-SQLAlchemy==3.0.3
