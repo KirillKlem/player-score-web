@@ -1,14 +1,10 @@
-from players.count_score import count_stat, get_percentage #Импорт общих функций для подсчёта скора голкипера
+from .gk_score import count_score
 import click 
 
-from main.extensions import db
-from players.models import Goalkeeper, Player
 
 @click.command
 def print_gk():
-    # gk1 = db.session.query(Goalkeeper).first()
-    # print(gk1)
-    print('click!')
+    count_score()
 
 # def possesion_gk(goalkeepers):
 #   goalkeepers_posession_score = {}                            #Словарь скора каждого игрока

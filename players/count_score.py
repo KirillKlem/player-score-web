@@ -1,50 +1,64 @@
-def count_stat(players, stat, minutes=False, matches=False):
-  counter = test_counter(minutes, matches)          #Проверяем считаем мы относительно минут или матчей
+from main.extensions import db
+from .models import Player
+
+def count_stat(players, stat):      
 
   avg_player_stat = 0
-  player_stat = list()
+  player_stats = list()
 
   for player in players:
-      avg_player_stat += (player[stat] / player[counter]) #Считаем сумму показателя всех игроков с расчётом деления на матчи/минуты
-      player_stat.append({                #Записываем в список словарь игрока с ключами name и stat
+      current_player_stat = player[stat] / (player['playing_time_min'] / 90)
+      avg_player_stat += current_player_stat
+      player_stats.append({                
         'name':player['name'], 
-        stat:round((player[stat] / player[counter]), 2),#Округляем до двух знаков значение
+        stat:round(current_player_stat, 2),
       })
-  avg_player_stat /= len(players)               #Получаем итоговое avg, деля на кол-во игроков
+  avg_player_stat /= len(players)              
 
-  final_stats = {                       #Создаём для удобства чтения отдельную переменную с финальными данными
-    'avg_stat':round(avg_player_stat, 2),          #Округляем до двух знаков значение
-    'player_stat':player_stat,
+  final_stats = {                       
+    'avg_stat':round(avg_player_stat, 2),          
+    'player_stat':player_stats,
   } 
 
   return final_stats
-
  
-def test_counter(minutes=False, matches=False):         #Проверка на счёт относительно минут или матчей *уже сомнения по поводу целесообразности минут и функции соответственно*
-  try:
-    if minutes == True and matches == False:        #Условия для минут
-      return 'minutes'        
-    elif matches == True and minutes == False:       #Условия для матчей
-      return 'matches'
-    else:  
-      raise KeyError                   #Если не названо ни одно значение как True или оба являются True, то вызываем ошибку
-  except(KeyError):                      #Обрабатываем эту ошибку
-    print('The counter is not set, the "matches" are set by default')  #Сообщаем пользователю об неверном указании для делителя 
-    return 'matches'                          #Устанавливаем матчи по умолчанию
   
-def get_percentage(players, stat, minutes=False, matches=False):
-  counter = test_counter(minutes, matches)             #Проверка для делителя
+def get_percentage(players, stat):         
 
   for player in players:
-    player[stat] /= player[counter]               #Считаем stat относительно минут/матчей
+    player[stat] /= (player['playing_time_min'] / 90)       
 
-  sorted_players = sorted(players, key=lambda x: x[stat])     #Сортировка по stat
+  ranked_players = sorted(players, key=lambda x: x[stat])    
 
-  percentages = {}                         #Итоговый словарь для скора
-  for player in sorted_players:                                       #Добавляем каждого игрока в наш словарь для скора
-    percentages[player['name']] = {                                    #Ключом будет являться имя игрока для удобства вызова
-      'percentage':round(100.01 - ((sorted_players.index(player) + 1) / len(sorted_players) * 100), 2), #Нахождение в какой процент лучших входит игрок, с округлением до двух знаков после запятой *вопрос по 0.01*
-      'positive_score':round(((sorted_players.index(player) + 1) / len(sorted_players) * 100), 2),   #Нахождение скора для позитивного показателя (проценты - скор для негативного показателя)
+  percentages = {}                       
+  for player in ranked_players:    
+    player_score = (ranked_players.index(player) + 1) / len(ranked_players) * 100                                  
+    percentages[player['name']] = {                                 
+      'percentage':round((100.01 - player_score), 2),
+      'positive_score':round(player_score, 2),   
       }                                        
     
   return percentages 
+
+#get_stat or get_player_stats
+
+def get_stat(player_name, stat):
+
+  player = Player.query.filter_by(name=player_name).first()
+  return getattr(player, stat)
+
+def get_player_stats(player_name):
+
+  player = Player.query.filter_by(name=player_name).first()
+  print(player)
+
+
+
+def get_name_players(position):
+  player_names = list()
+
+  players = Player.query.filter(Player.pos == position).all()
+  for player in players:
+    player_names.append(player)
+  return player_names
+  
