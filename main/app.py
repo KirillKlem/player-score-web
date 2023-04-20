@@ -1,8 +1,9 @@
 from flask import Flask, request, jsonify
-from main.extensions import db, migrate, ma
+from flask_admin.contrib.sqla import ModelView
+
+from main.extensions import admin, db, migrate, ma
 import players
-
-
+from players.models import Goalkeeper, Defender, Midfielder, Attacking
 
 
 def create_app(config_object="main.settings"):
@@ -19,11 +20,21 @@ def register_extensions(app):
     db.init_app(app)
     migrate.init_app(app, db)
     ma.init_app(app)
+    admin.init_app(app)
     return None
+
 
 def register_blueprints(app):
     app.register_blueprint(players.views.blueprint)
     return None
 
+
 def register_commands(app):
     app.cli.add_command(players.commands.print_gk)
+
+
+def register_admin():
+    admin.add_view(ModelView(Goalkeeper, db.session))
+    admin.add_view(ModelView(Defender, db.session))
+    admin.add_view(ModelView(Midfielder, db.session))
+    admin.add_view(ModelView(Attacking, db.session))

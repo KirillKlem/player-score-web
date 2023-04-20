@@ -27,14 +27,33 @@ def save_player(position):
 
 @blueprint.route('/')
 def get_players_list():
-    players = db.session.execute(db.select(Player)).scalars()
+    database_query = db.select(Player)
+    teams = Player.query.with_entities(Player.team).distinct()
     title = 'Список игроков'
-    return render_template('index.html', players=players, title=title)
+    
+    query_params = request.args.to_dict()
+    team = query_params.get('team')
+    if team:
+        database_query = database_query.filter_by(team=team)
+    players = db.session.execute(db.select(Player)).scalars()
+    context = {
+       'players': players,
+       'title': title,
+       'teams': [team[0] for team in teams],
+    }
+
+    return render_template('index.html', **context)
 
 
 @blueprint.route('/<int:id_>')
 def get_player_details(id_):
     player = db.get_or_404(Player, id_)
     title = player.name
+    context = {
+           'player': player,
+           'title': title,
+           'fields': fields,
+           'getattr': getattr
+    }
     fields = attribute_names(player.__class__)
-    return render_template('detail.html', player=player, title=title, fields=fields, getattr=getattr)
+    return render_template('detail.html', **context)

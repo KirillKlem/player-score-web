@@ -10,6 +10,22 @@
 <body>
 <div class="container py-5">
   <h1>Лушчие игроки сезона</h1>
+
+  <form class="my-3">
+    <div class="form-group">
+      <label for="team">Выберите команду</label>
+      <select class="form-control mt-2" id="team" name="team">
+        <option selected>Все команды</option>
+        {%for team in teams %}
+          <option value="{{ team }}">{{ team }}</option>
+        {% endfor %}
+        
+      </select>
+    </div>
+    <button type="submit" class="btn btn-primary mt-2">Применить фильтр</button>
+  </form>
+
+
     <table class="table">
       <thead>
         <tr>
