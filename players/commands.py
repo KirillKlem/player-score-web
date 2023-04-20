@@ -1,8 +1,8 @@
-from .gk_score import count_score
-import click 
+from players.gk_score import count_score
 
+import click
 
-@click.command
+@click.command()
 def print_gk():
     count_score()
 

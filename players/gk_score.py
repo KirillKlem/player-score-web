@@ -1,7 +1,4 @@
-from .count_score import count_stat, get_name_players
-from main.extensions import db
-from .models import Player, Goalkeeper
-
+from .count_score import get_name_players
 
 goalkeeper_names = get_name_players('GK')
 def count_score():

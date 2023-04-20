@@ -1,4 +1,4 @@
-from flask import Flask, request, jsonify
+from flask import Flask
 from main.extensions import db, migrate, ma
 import players
 
