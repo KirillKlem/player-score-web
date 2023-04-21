@@ -1,11 +1,18 @@
-from players.gk_score import count_score
+from main.extensions import db
+from .models import Player
 
 import click
 
 @click.command()
 def print_gk():
-    count_score()
+    player_names = []
 
+    players = db.session.execute(db.select(Player).filter_by(pos='GK')).scalars()
+    for player in players:
+        player_names.append(player)
+
+    print(player_names)
+    
 # def possesion_gk(goalkeepers):
 #   goalkeepers_posession_score = {}                            #Словарь скора каждого игрока
 #   score_touches = get_percentage(goalkeepers, 'touches', matches=True)          #Получаем скор по touches

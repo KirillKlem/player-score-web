@@ -40,22 +40,9 @@ def get_percentage(players, stat):
     
   return percentages 
 
-#get_stat or get_player_stats
-
-def get_stat(player_name, stat):
-
-  player = Player.query.filter_by(name=player_name).first()
-  return getattr(player, stat)
-
-def get_player_stats(player_name):
-
-  player = Player.query.filter_by(name=player_name).first()
-  print(player)
-
-
 
 def get_name_players(position):
-  player_names = list()
+  player_names = []
 
   players = Player.query.filter(Player.pos == position).all()
   for player in players:
