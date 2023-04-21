@@ -12,6 +12,7 @@ def create_app(config_object="main.settings"):
     register_extensions(app)
     register_blueprints(app)
     register_commands(app)
+    register_admin()
 
     return app
 
@@ -38,3 +39,4 @@ def register_admin():
     admin.add_view(ModelView(Defender, db.session))
     admin.add_view(ModelView(Midfielder, db.session))
     admin.add_view(ModelView(Attacking, db.session))
+    

@@ -23,7 +23,7 @@
         </tr>
       </thead>
       <tbody>
-          {% for field in fields %}
+        {% for field in fields %}
           <tr>
             <td>{{ field }}</td>
             <td>{{ getattr(player, field, None) }}</td>
