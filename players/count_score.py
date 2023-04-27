@@ -1,19 +1,22 @@
 from main.extensions import db
 from .models import Player
+from .utils import attribute_names
 
 def count_stat(players, stat):      
 
   avg_player_stat = 0
-  player_stats = list()
+  player_stats = []
 
   for player in players:
-      current_player_stat = player[stat] / (player['playing_time_min'] / 90)
+      current_player_stat = getattr(player, stat) / (player.playing_time_min / 90)
       avg_player_stat += current_player_stat
+
       player_stats.append({                
-        'name':player['name'], 
+        'name':player.name, 
         stat:round(current_player_stat, 2),
       })
-  avg_player_stat /= len(players)              
+
+  avg_player_stat /= len(players.all())          
 
   final_stats = {                       
     'avg_stat':round(avg_player_stat, 2),          
@@ -41,11 +44,27 @@ def get_percentage(players, stat):
   return percentages 
 
 
-def get_name_players(position):
-  player_names = []
+def get_names(position):
+    players = db.session.execute(db.select(Player).filter_by(pos=position)).scalars()
+    player_names = []
+    for player in players:
+        player_names.append(player.name)
 
-  players = Player.query.filter(Player.pos == position).all()
-  for player in players:
-    player_names.append(player)
-  return player_names
+    return player_names
+
+def create_players(names):
+   players = []
+   for name in names:
+        players.append(Player.query.filter_by(name=name).first())
+
+   return players  
   
+def get_all_stats(player_models):
+    players = []
+    for player in player_models:
+        stats = {}
+        for attribute in attribute_names(type(player)):
+            stats[attribute] = getattr(player, attribute)
+        players.append(stats)
+    
+    return players
