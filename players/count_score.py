@@ -35,9 +35,10 @@ def get_percentage(players, stat):
 
   percentages = {}                       
   for player in ranked_players:    
-    player_score = (ranked_players.index(player) + 1) / len(ranked_players) * 100                                  
+    player_score = (ranked_players.index(player) + 1) / len(ranked_players) * 100   
+
     percentages[player['name']] = {                                 
-      'percentage':round((100.01 - player_score), 2),
+      'negative_score':round((100.01 - player_score), 2),
       'positive_score':round(player_score, 2),   
       }                                        
     
@@ -52,14 +53,15 @@ def get_names(position):
 
     return player_names
 
-def create_players(names):
+def create_players(player_names):
    players = []
-   for name in names:
-        players.append(Player.query.filter_by(name=name).first())
+   for player_name in player_names:
+        players.append(Player.query.filter_by(name=player_name).first())
 
    return players  
   
-def get_all_stats(player_models):
+def get_all_stats(player_names):
+    player_models = create_players(player_names)
     players = []
     for player in player_models:
         stats = {}
@@ -68,3 +70,36 @@ def get_all_stats(player_models):
         players.append(stats)
     
     return players
+
+def get_type_of_stats(players, const):
+    score_of_types = {}
+
+    for type in const:
+          score_of_types[type] = get_percentage(players, type)
+
+    return score_of_types
+
+def count_score_of_types(player_names, score_of_types):
+    result_score = {}
+
+    for player in player_names:
+        player_score_of_types = []
+
+        for type in score_of_types:
+            player_score_of_types.append(score_of_types[type][player]['positive_score']) 
+
+        result_score[player] = round(sum(player_score_of_types) / len(player_score_of_types), 2)
+
+    return result_score
+
+def add_in_all_score(result_group_type, all_score):
+    for player_name, value in result_group_type.items():
+            all_score[player_name].append(value)
+  
+def count_score(player_names, all_score):
+    final_score = {}
+    for player in player_names:
+        final_score[player] = round(sum(all_score[player]) / len(all_score[player]), 2)
+
+    return final_score
+
