@@ -2,6 +2,8 @@ from main.extensions import db
 from .models import Player
 from .utils import attribute_names
 
+from pprint import pprint
+
 def count_stat(players, stat):      
 
   avg_player_stat = 0
@@ -85,24 +87,39 @@ def get_type_of_stats(players, const):
     return score_of_types
 
 
-def count_weighted_average(score_of_types):
-    for type, players in score_of_types.items():
-        for player_name, player_stats in players.items():
-            print(player_stats)
+def create_weighted_average(player_names, player_stats, const):
+    player_stats = get_type_of_stats(player_stats, const)
+    weighted_average_stats = {player: {} for player in player_names}
+    for player_name in player_names:
+        all_weight = 0
+        all_score = 0
+        for type in const:
+            all_weight += const[type]
+            all_score += player_stats[type][player_name]['positive_score'] * const[type]
+
+        weighted_average_stats[player_name] = round((all_score / all_weight), 2)
+
+    return weighted_average_stats
+
+def count_create_weighted_average(stats, player_names):
+    pass
 
 
-def count_score_of_types(player_names, score_of_types):
+
+def count_score_of_types(player_names, weighted_average_stats, const):
     result_score = {}
 
-    for player in player_names:
-        player_score_of_types = []
+    for player_name in player_names:
+        player_score = 0
+        player_score_weight = 0
+        for type in weighted_average_stats:
+            player_score += weighted_average_stats[type][player_name] * const[type.upper()]
+            player_score_weight += const[type.upper()]
 
-        for type in score_of_types:
-            player_score_of_types.append(score_of_types[type][player]['positive_score']) 
-
-        result_score[player] = round(sum(player_score_of_types) / len(player_score_of_types), 2)
+        result_score[player_name] = round((player_score / player_score_weight), 2)
 
     return result_score
+
 
 
 def add_to_all_score(result_group_type, all_score):
