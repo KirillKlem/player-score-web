@@ -2,7 +2,6 @@ from main.extensions import db
 from .models import Player
 from .utils import attribute_names
 
-from typing import *
 from pprint import pprint
 
 def count_stat(players, stat):      
@@ -31,11 +30,11 @@ def count_stat(players, stat):
   
 def get_percentage(players: dict[str, dict], stat: str) -> dict[str, dict]:    
     '''
-    Считаем скор для одной характеристики (stat) выбранных игроков (players)
-    Получаем скор по каждому игроку: имя -> словарь 
-    Словарь состоит из двух характеристик: 
-    negative_score отвечает за характеристики, которые отражают негативное влияние игрока
-    positive_score отвечает за характеристики, которые отражают положительное влияние игрока
+    We count the score for one characteristic (stat) of the selected players (players)
+    We get a score for each player: name -> dict
+    The dict consists of two characteristics:
+    negative_score is responsible for the characteristics that reflect the negative influence of the player
+    positive_score is responsible for the characteristics that reflect the positive influence of the player
     '''     
 
     for player in players:
@@ -58,7 +57,7 @@ def get_percentage(players: dict[str, dict], stat: str) -> dict[str, dict]:
 
 def get_names(position: str) -> list[str]:
     '''
-    Получаем из ДБ имена всех игроков определённой позиции (position)
+    We get from DB the names of all players of a certain position (position)
     '''
     
     players = db.session.execute(db.select(Player).filter_by(pos=position)).scalars()
@@ -71,7 +70,7 @@ def get_names(position: str) -> list[str]:
 
 def create_players(player_names: list[str]) -> list[Player]:
    '''
-   Получаем модели, подходящие для передаваемых игроков (player_names) 
+   We get models suitable for the transmitted players (player_names)
    '''
    
    player_models = []
@@ -83,8 +82,8 @@ def create_players(player_names: list[str]) -> list[Player]:
   
 def get_all_stats(player_names: list[str]) -> list[dict]:
     '''
-    Получаем всю статистику по указанным игрокам (player_names) из ДБ
-    Получаемое значение в виде: имя_игрока -> словарь из данных
+    We get all the statistics for the specified players (player_names) from DB
+    The resulting value is in the form: player name -> dict from the data
     '''
 
     player_models = create_players(player_names)
@@ -99,9 +98,9 @@ def get_all_stats(player_names: list[str]) -> list[dict]:
     return players
 
 
-def get_type_of_stats(players: list[dict], const: dict):
+def count_score_of_stat(players: list[dict], const: dict):
     '''
-    Рассчитываем скор игроков по каждой характеристике из константы (const), содержащей нужные поля
+    We calculate the score of players for each characteristic from a constant (const) containing the necessary fields
     '''
 
     score_of_types = {}
@@ -112,34 +111,48 @@ def get_type_of_stats(players: list[dict], const: dict):
     return score_of_types
 
 
-def create_weighted_average(player_names: list[str], player_stats: list[dict], const: dict) -> dict[str, float]:
+def create_weighted_average(player_names: list[str], player_stats: list[dict], const: dict) -> dict[str, dict]:
     '''
-    Создаём словарь для указанных игроков (player_names), в котором посчитано средневзвешенное значение
+    Creating a dictionary for the specified players (player_names), in which the weighted average value is calculated
     '''
 
-    player_stats = get_type_of_stats(player_stats, const)
+    player_stats = count_score_of_stat(player_stats, const)
     weighted_average_stats = {player: {} for player in player_names}
 
     for player_name in player_names:
-        weighted_average_stats[player_name] = count_weighted_average(player_name, player_stats, const, 'positive_score')
+        weighted_average_stats[player_name] = count_weighted_average(player_name, player_stats, const, addition='positive_score', type_name=True)
 
     
     return weighted_average_stats
 
-def count_weighted_average(player_name: str, player_stats: float, type_names: dict, addition=None) -> dict:
+def count_weighted_average(player_name: str, player_stats: dict[str, dict], const: dict, addition=None, type_name=False, name_type=False) -> dict:
     '''
-    pass
+    Count weighted average for the specified players (player_names) 
+    The weight is taken from the needful constant (const)
+    Player stats (player_stats) contains data about players
+    Note:
+    "addition" is created for data structures that are longer than expected
+    "type_name" or "name_type" indicate a particular data structure
+    "type_name" means that "player_stats" stores data in the form: type -> name
+    "name_type" means that "player_stats" stores data in the form: name -> type
+
+    Rough formula for calculating the weighted average:
+    (value1 * its_weight + value2 * its_weight ... valueN * its_weight) / (sum of all weights)
     '''
     
     player_score_weight = 0
     player_score = 0
-    for type in type_names:
+    for type in const:
+        player_score_weight += const[type]
         if addition:
-            player_score_weight += type_names[type]
-            player_score += player_stats[type.lower()][player_name][addition] * type_names[type]
+            player_score += player_stats[type.lower()][player_name][addition] * const[type]
         else:
-            player_score_weight += type_names[type]
-            player_score += player_stats[type.lower()][player_name] * type_names[type]
+            if type_name:
+                player_score += player_stats[type.lower()][player_name] * const[type]
+            elif name_type:
+                player_score += player_stats[player_name][type.lower()] * const[type]
+            else:
+                raise KeyError('The data structure is not defined')
 
     return round((player_score / player_score_weight), 2)
 
@@ -147,34 +160,46 @@ def count_weighted_average(player_name: str, player_stats: float, type_names: di
     
 
     
-def count_score_of_types(player_names: list[str], weighted_average_stats: dict[str, float], const: dict) -> dict[str, float]:
+def count_main_weighted_average(player_names: list[str], weighted_average_stats: dict[str, dict], const: dict) -> dict[str, float]:
+    '''
+    Create a dict with weighted averages for the main constant (const)
+    Data in the resulting dictionary: player name -> weighted average
+    '''
+    
     result_score = {}
 
     for player_name in player_names:
-        result_score[player_name] = count_weighted_average(player_name, weighted_average_stats, const)
+        result_score[player_name] = count_weighted_average(player_name, weighted_average_stats, const, type_name=True)
 
     return result_score
 
 
 
-def add_to_all_score(result_group_type, all_score):
-    for player_name, value in result_group_type.items():
-            all_score[player_name].append(value)
+def add_to_all_score(all_weighted_average: dict[str, dict], all_score: dict[str, dict]):
+    '''
+    Add (all) intermediate values for a complete list of values
+    '''
+
+    for type in all_weighted_average:
+        for player_name, value in all_weighted_average[type].items():
+            all_score[player_name][type] = value
 
 
-def add_to_final_score(adding_stat_name, final_score, all_score):
+def add_to_final_score(type_name: str, intermediate_score: dict[str, float], final_score: dict[str, dict]):
+    '''
+    Add (main) intermediate values for a complete list of values
+    '''
+
     for player in final_score:
-        final_score[player][adding_stat_name] = round(sum(all_score[player]) / len(all_score[player]), 2)
+        final_score[player][type_name] = intermediate_score[player]
 
   
-def count_total_score(player_names, final_score, all_score):
-    for player in player_names:
-
-        total_score = []
-        for stat in final_score[player]:
-            total_score.append(final_score[player][stat])
-        total_score = round(sum(total_score) / len(total_score), 2)
-
-        final_score[player]['total'] = round(sum(all_score[player]) / len(all_score[player]), 2)
+def count_total_score(final_score: dict[str, dict], const: str):
+    '''
+    Count total score of each player and add its in "final score" as 'total'
+    '''
+    
+    for player_name in final_score:
+        final_score[player_name]['total'] = count_weighted_average(player_name, final_score, const, name_type=True)
 
 
