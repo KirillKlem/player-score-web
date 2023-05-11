@@ -26,11 +26,14 @@ def count_gk_score():
         result_stats_gk = count_main_weighted_average(gk_names, weighted_average, getattr(constants, main_constant))
         add_to_final_score(main_constant.lower(), result_stats_gk, final_gk_score)
             
+    for const in constants.TOTAL_SCORE_GK:
+        count_group_stats(const)
 
-    count_group_stats('TEAM_INFLUENCE_GK')
     count_total_score(final_gk_score, getattr(constants, 'TOTAL_SCORE_GK'))
-    pprint(all_gk_score)
-    pprint(final_gk_score)
+    # pprint(all_gk_score)
+    # pprint(final_gk_score)
+
+
 
 
 
