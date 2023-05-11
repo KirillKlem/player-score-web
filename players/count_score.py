@@ -1,34 +1,11 @@
 from main.extensions import db
 from .models import Player
 from .utils import attribute_names
+from . import constants
 
 from pprint import pprint
-
-def count_stat(players, stat):      
-
-    avg_player_stat = 0
-    player_stats = []
-
-    for player in players:
-        current_player_stat = getattr(player, stat) / (player.playing_time_min / 90)
-        avg_player_stat += current_player_stat
-
-        player_stats.append({                
-        'name':player.name, 
-        stat:round(current_player_stat, 2),
-        })
-
-    avg_player_stat /= len(players.all())          
-
-    final_stats = {                       
-    'avg_stat':round(avg_player_stat, 2),          
-    'player_stat':player_stats,
-    } 
-
-    return final_stats
- 
   
-def get_percentage(players: dict[str, dict], stat: str) -> dict[str, dict]:    
+def get_percentage(players: dict[str, dict], stat: str, positive_stat=None) -> dict[str, dict]:    
     '''
     We count the score for one characteristic (stat) of the selected players (players)
     We get a score for each player: name -> dict
@@ -47,10 +24,13 @@ def get_percentage(players: dict[str, dict], stat: str) -> dict[str, dict]:
     for player in ranked_players:    
         player_score = (ranked_players.index(player) + 1) / len(ranked_players) * 100   
 
-        percentages[player['name']] = {                                 
-        'negative_score':round((100.01 - player_score), 2),
-        'positive_score':round(player_score, 2),   
-        }                                        
+        if positive_stat is True:
+            percentages[player['name']] = {'original_score':round(player_score, 2)}  
+        elif positive_stat is False:
+            percentages[player['name']] = {'original_score':round((100.01 - player_score), 2)}                          
+        else:
+            raise KeyError('It is unknown which characteristic: positive or negative')
+                                           
         
     return percentages 
 
@@ -63,7 +43,8 @@ def get_names(position: str) -> list[str]:
     players = db.session.execute(db.select(Player).filter_by(pos=position)).scalars()
     player_names = []
     for player in players:
-        player_names.append(player.name)
+        if player.playing_time_min > 600:
+            player_names.append(player.name)
 
     return player_names
 
@@ -106,7 +87,10 @@ def count_score_of_stat(players: list[dict], const: dict):
     score_of_types = {}
 
     for type in const:
-        score_of_types[type] = get_percentage(players, type)
+        if type in constants.NEGATIVE_PLAYER_STATS:
+            score_of_types[type] = get_percentage(players, type, positive_stat=False)
+        else:
+            score_of_types[type] = get_percentage(players, type, positive_stat=True)
     
     return score_of_types
 
@@ -120,7 +104,7 @@ def create_weighted_average(player_names: list[str], player_stats: list[dict], c
     weighted_average_stats = {player: {} for player in player_names}
 
     for player_name in player_names:
-        weighted_average_stats[player_name] = count_weighted_average(player_name, player_stats, const, addition='positive_score', type_name=True)
+        weighted_average_stats[player_name] = count_weighted_average(player_name, player_stats, const, addition='original_score', type_name=True)
 
     
     return weighted_average_stats
