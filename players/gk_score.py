@@ -30,11 +30,3 @@ def count_gk_score():
         count_group_stats(const)
 
     count_total_score(final_gk_score, getattr(constants, 'TOTAL_SCORE_GK'))
-    # pprint(all_gk_score)
-    # pprint(final_gk_score)
-
-
-
-
-
-        
