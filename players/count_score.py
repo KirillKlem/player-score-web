@@ -138,7 +138,10 @@ def count_weighted_average(player_name: str, player_stats: dict[str, dict], cons
             else:
                 raise KeyError('The data structure is not defined')
 
-    return round((player_score / player_score_weight), 2)
+    try:
+        return round((player_score / player_score_weight), 2)
+    except ZeroDivisionError:
+        raise ValueError('Weights of all stats are zero, you have to specify its')
 
 
     
