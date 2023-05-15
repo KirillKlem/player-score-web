@@ -18,11 +18,6 @@ DEFENSIVE_TEAM_INFLUENCE_GK = {
     'total_att': 60, 
 }
 
-TEAM_INFLUENCE_GK = {
-    'DIRECT_TEAM_INFLUENCE_GK': 45, 
-    'DEFENSIVE_TEAM_INFLUENCE_GK': 65,
-}
-
 PASSING_OVERALL_GK = {
     'total_cmp': 20,
     'total_cmp_percent': 80,
@@ -58,14 +53,6 @@ PASSING_ATACKING_GK = {
     'prgp': 50,
 }
 
-PASSING_GK = {
-    'PASSING_OVERALL_GK': 33,
-    'PASSING_SHORT_GK': 50,
-    'PASSING_MEDIUM_GK': 40,
-    'PASSING_LONG_GK': 28,
-    'PASSING_ATACKING_GK': 17,
-}
-
 ALLOWED_GOALKEEPING_GK = {
     'performance_ga': 50,
     'performance_ga90': 50,
@@ -84,16 +71,86 @@ PENALTY_SAVES_GOALKEEPING_GK = {
     'penalty_kicks_pka': 10,
 }
 
+SPECIAL_GOALS_GK = {
+    'goals_ck': 10,
+    'goals_fk': 10,
+    'goals_og': 10,
+}
+
+PSXG_GK = {
+    'expected_psxg_plus_in_minus': 95,
+    'expected_psxg_in_sot': 10,
+}
+
+DEFENSIVE_ACTIONS_GK = {
+    'sweeper_avgdist': 35,
+    'sweeper_opa': 90,
+}
+
+LAUNCHED_GK = {
+    'launched_att': 40,
+    'launched_cmp': 35,
+    'launched_cmp_percent': 80,
+}
+
+THROWS_GK = {
+    'passes_att': 50,
+    'passes_avglen': 65,
+    'passes_launch_percent': 30,
+    'passes_thr': 30,
+}
+
+GOAL_KICKS_GK = {
+    'goal_kicks_att': 10,
+    'goal_kicks_avglen': 20,
+    'goal_kicks_launch_percent': 20,
+}
+
+CROSSES_GK = {
+    'crosses_opp': 10,
+    'crosses_stp': 50,
+    'crosses_stp_percent': 90,
+}
+
+TEAM_INFLUENCE_GK = {
+    'DIRECT_TEAM_INFLUENCE_GK': 45, 
+    'DEFENSIVE_TEAM_INFLUENCE_GK': 65,
+}
+
+GENERAL_PASSING_GK = {
+    'PASSING_OVERALL_GK': 33,
+    'PASSING_SHORT_GK': 50,
+    'PASSING_MEDIUM_GK': 40,
+    'PASSING_LONG_GK': 28,
+    'PASSING_ATACKING_GK': 17,
+}
+
 GOALKEEPING_GK = {
     'ALLOWED_GOALKEEPING_GK': 40,
     'SAVES_GOALKEEPING_GK': 95,
     'PENALTY_SAVES_GOALKEEPING_GK': 10,
 }
 
-TOTAL_SCORE_GK = {
-    'TEAM_INFLUENCE_GK': 10,
-    'PASSING_GK': 40,
-    'GOALKEEPING_GK': 95,
+ADVANCED_GOALKEEPING_GK = {
+    'SPECIAL_GOALS_GK': 20,
+    'PSXG_GK': 80,
+    'DEFENSIVE_ACTIONS_GK': 40,
 }
 
-NEGATIVE_PLAYER_STATS = ['performance_ga', 'performance_ga90', 'penalty_kicks_pka']
+ADVANCED_PASSING_GK = {
+    'LAUNCHED_GK': 45,
+    'THROWS_GK': 25,
+    'GOAL_KICKS_GK': 10,
+    'CROSSES_GK': 40,
+}
+
+TOTAL_SCORE_GK = {
+    'TEAM_INFLUENCE_GK': 10,
+    'GENERAL_PASSING_GK': 50,
+    'GOALKEEPING_GK': 95,
+    'ADVANCED_GOALKEEPING_GK': 40,
+    'ADVANCED_PASSING_GK': 40,
+}
+
+NEGATIVE_PLAYER_STATS = ['performance_ga', 'performance_ga90', 'penalty_kicks_pka', 'goals_ck',
+                         'goals_fk', 'goals_og', 'expected_psxg_in_sot']
