@@ -3,12 +3,11 @@ from .models import Player
 from .utils import attribute_names
 from . import constants
 
-from pprint import pprint
-  
+
 def get_percentage(players: dict[str, dict], stat: str, positive_stat=None) -> dict[str, dict]:    
     '''
-    We count the score for one characteristic (stat) of the selected players (players)
-    We get a score for each player: name -> dict
+    Count the score for one characteristic (stat) of the selected players (players)
+    Get a score for each player: name -> dict
     The dict consists of two characteristics:
     negative_score is responsible for the characteristics that reflect the negative influence of the player
     positive_score is responsible for the characteristics that reflect the positive influence of the player
@@ -35,23 +34,24 @@ def get_percentage(players: dict[str, dict], stat: str, positive_stat=None) -> d
     return percentages 
 
 
-def get_names(position: str) -> list[str]:
+def get_names(position: str, condition: int) -> list[str]:
     '''
-    We get from DB the names of all players of a certain position (position)
+    Get from DB the names of all players of a certain position (position)
+    Sort players by conidition (condition) by their playing minutes
     '''
     
     players = db.session.execute(db.select(Player).filter_by(pos=position)).scalars()
     player_names = []
     for player in players:
-        if player.playing_time_min > 600:
+        if player.playing_time_min > condition:
             player_names.append(player.name)
 
     return player_names
 
 
-def create_players(player_names: list[str]) -> list[Player]:
+def create_models(player_names: list[str]) -> list[Player]:
    '''
-   We get models suitable for the transmitted players (player_names)
+   Get models suitable for the transmitted players (player_names)
    '''
    
    player_models = []
@@ -63,11 +63,11 @@ def create_players(player_names: list[str]) -> list[Player]:
   
 def get_all_stats(player_names: list[str]) -> list[dict]:
     '''
-    We get all the statistics for the specified players (player_names) from DB
+    Get all the statistics for the specified players (player_names) from DB
     The resulting value is in the form: player name -> dict from the data
     '''
 
-    player_models = create_players(player_names)
+    player_models = create_models(player_names)
     players = []
 
     for player in player_models:
@@ -81,7 +81,7 @@ def get_all_stats(player_names: list[str]) -> list[dict]:
 
 def count_score_of_stat(players: list[dict], const: dict):
     '''
-    We calculate the score of players for each characteristic from a constant (const) containing the necessary fields
+    Calculate the score of players for each characteristic from a constant (const) containing the necessary fields
     '''
 
     score_of_types = {}
@@ -190,3 +190,12 @@ def count_total_score(final_score: dict[str, dict], const: str):
         final_score[player_name]['total'] = count_weighted_average(player_name, final_score, const, name_type=True)
 
 
+def update_db(player_models: Player, player_score: dict[str, dict]):
+    '''
+    Update db by changing score of players
+    Player_score is usually called by type - 'final_*position*_score'
+    '''
+    
+    for player in player_models:
+        player.score = player_score[player.name]['total']
+    db.session.commit()
