@@ -31,7 +31,7 @@ def register_blueprints(app):
 
 
 def register_commands(app):
-    app.cli.add_command(players.commands.print_gk)
+    app.cli.add_command(players.commands.count_score)
 
 
 def register_admin():
