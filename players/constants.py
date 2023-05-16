@@ -154,3 +154,5 @@ TOTAL_SCORE_GK = {
 
 NEGATIVE_PLAYER_STATS = ['performance_ga', 'performance_ga90', 'penalty_kicks_pka', 'goals_ck',
                          'goals_fk', 'goals_og', 'expected_psxg_in_sot']
+
+TOTAL_SCORE_DF = {}
