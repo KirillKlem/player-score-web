@@ -152,7 +152,95 @@ TOTAL_SCORE_GK = {
     'ADVANCED_PASSING_GK': 40,
 }
 
-NEGATIVE_PLAYER_STATS = ['performance_ga', 'performance_ga90', 'penalty_kicks_pka', 'goals_ck',
-                         'goals_fk', 'goals_og', 'expected_psxg_in_sot']
+PASSING_TOTAL_DF = {
+    'total_cmp': 80,
+    'total_cmp_percent': 90,
+    'total_prgdist': 70,
+    'total_totdist': 50,
+}
 
-TOTAL_SCORE_DF = {}
+PASSING_SHORT_DF = {
+    'short_att': 90,
+    'short_cmp': 50,
+    'short_cmp_percent': 90,
+}
+
+PASSING_MEDIUM_DF = {
+    'medium_att': 70,
+    'medium_cmp': 50,
+    'medium_cmp_percent': 90,
+}
+
+PASSING_LONG_DF = {
+    'long_att': 60,
+    'long_cmp': 90,
+    'long_cmp_percent': 90,
+}
+
+PASSING_ATACKING_DF = {
+    'ast': 20,
+    'xa': 20,
+    'xag': 20,
+    'kp': 50,
+    'on1_in_3': 75,
+    'ppa': 75,
+    'prgp': 90,
+}
+
+NEGATIVE_PASSING_DF = {
+    'outcomes_blocks': 70,
+    'outcomes_off': 30,
+}
+
+PASSING_DF = {
+    'PASSING_TOTAL_DF': 95,
+    'PASSING_SHORT_DF': 60,
+    'PASSING_MEDIUM_DF': 55,
+    'PASSING_LONG_DF': 50,
+    'PASSING_ATACKING_DF': 30,
+    'NEGATIVE_PASSING_DF': 10,
+}
+
+TACKLES_DF = {
+    'tackles_att_3rd': 30,
+    'tackles_def_3rd': 100,
+    'tackles_mid_3rd': 50,
+    'tackles_tkl': 90,
+    'tackles_tklw': 200,
+}
+
+DRIBBLES_CHALLENGE_DF = {
+    'challenges_att': 20,
+    'challenges_lost': 60,
+    'challenges_tkl': 55,
+    'challenges_tkl_percent': 90,
+}
+
+BLOCKS_DF = {
+    'blocks_blocks': 90,
+    'blocks_pass': 50,
+    'blocks_sh': 50,
+}
+
+DEFENSIVE_MOVES_DF = {
+    '_int': 90,
+    'tkl_plus_int': 90,
+    'clr': 40,
+    'err': 55,
+}
+
+DEFENSIVE_ACTIONS_DF = {
+    'TACKLES_DF': 150,
+    'DRIBBLES_CHALLENGE_DF': 90,
+    'BLOCKS_DF': 70,
+    'DEFENSIVE_MOVES_DF': 100,
+}
+
+TOTAL_SCORE_DF = {
+    'PASSING_DF': 50,
+    'DEFENSIVE_ACTIONS_DF': 200,
+}
+
+NEGATIVE_PLAYER_STATS = ['performance_ga', 'performance_ga90', 'penalty_kicks_pka', 'goals_ck',
+                         'goals_fk', 'goals_og', 'expected_psxg_in_sot', 'outcomes_blocks', 
+                         'outcomes_off', 'challenges_lost', 'err']
