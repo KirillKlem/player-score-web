@@ -4,7 +4,7 @@ Hello! This is an experimental web project (that is, it runs exclusively on the 
 ## Requirements
 * programming language Python3 and its libraries:
   + Web framework [Flask](https://flask.palletsprojects.com/en/3.0.x/)
-  + Library for parsing data from the necessary sites [Soccrdata](https://soccerdata.readthedocs.io/en/latest/intro.html)
+  + Library for parsing data from the necessary sites [Soccerdata](https://soccerdata.readthedocs.io/en/latest/intro.html)
 * sql toolkit [SQLAlchemy](https://www.sqlalchemy.org)
 
 ## Some details that have been paid attention to (i.e. studied in depth)
